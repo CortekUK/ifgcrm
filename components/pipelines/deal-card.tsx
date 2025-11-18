@@ -40,16 +40,19 @@ export function DealCard({ deal, stageName, onClick, onDragStart }: DealCardProp
 
   const stageBorder = STAGE_BORDER_MAP[stageName] || "border-l-gray-400"
 
+  const handleDragStart = (e: React.DragEvent) => {
+    e.dataTransfer.setData("dealId", deal.id.toString())
+    onDragStart()
+    setIsDragging(true)
+  }
+
   return (
     <>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
       <div
         draggable
-        onDragStart={() => {
-          onDragStart()
-          setIsDragging(true)
-        }}
+        onDragStart={handleDragStart}
         onDragEnd={() => setIsDragging(false)}
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}

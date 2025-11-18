@@ -12,10 +12,18 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CalendarIcon, Save, Send, Upload, Code } from "lucide-react"
-import { format } from "date-fns"
+import { CalendarIcon, Save, Send, Upload, Code } from 'lucide-react'
 import { cn } from "@/lib/utils"
 import { useToast } from "@/hooks/use-toast"
+
+function formatDate(date: Date | undefined): string {
+  if (!date) return "Pick a date"
+  return date.toLocaleDateString("en-US", { 
+    year: "numeric", 
+    month: "long", 
+    day: "numeric" 
+  })
+}
 
 interface Campaign {
   id: string
@@ -169,7 +177,7 @@ export function CampaignDrawer({ campaign, open, onClose, onSuccess }: CampaignD
               id="name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              placeholder="e.g., Summer Recruitment 2025"
+              placeholder="e.g., Champions League Talent Scout 2025"
             />
           </div>
 
@@ -298,7 +306,7 @@ export function CampaignDrawer({ campaign, open, onClose, onSuccess }: CampaignD
                   )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
-                  {scheduledDate ? format(scheduledDate, "PPP") : "Pick a date"}
+                  {formatDate(scheduledDate)}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0">

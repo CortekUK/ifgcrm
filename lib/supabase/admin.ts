@@ -10,5 +10,8 @@ export function createAdminClient() {
       autoRefreshToken: false,
       persistSession: false,
     },
+    global: {
+      fetch: fetch.bind(globalThis),
+    },
   })
 }

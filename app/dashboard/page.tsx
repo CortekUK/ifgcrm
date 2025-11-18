@@ -1,13 +1,15 @@
-import { redirect } from "next/navigation"
+import { redirect } from 'next/navigation'
 import { createClient } from "@/lib/supabase/server"
 import { AppLayout } from "@/components/layout/app-layout"
 import { StatsCards } from "@/components/dashboard/stats-cards"
 import { UnmatchedReplies } from "@/components/dashboard/unmatched-replies"
 import { LeadsByProgram } from "@/components/dashboard/leads-by-program"
 import { RecentActivity } from "@/components/dashboard/recent-activity"
+import { LeadSourcesBreakdown } from "@/components/dashboard/lead-sources-breakdown"
+import { ProgrammeInterest } from "@/components/dashboard/programme-interest"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { PlusCircle, Send } from "lucide-react"
+import { PlusCircle, Send } from 'lucide-react'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -52,6 +54,11 @@ export default async function DashboardPage() {
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <UnmatchedReplies />
         <LeadsByProgram />
+      </div>
+
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <LeadSourcesBreakdown />
+        <ProgrammeInterest />
       </div>
 
       <div className="mt-8 mb-16">

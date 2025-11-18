@@ -5,9 +5,32 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ExternalLink, ArrowRight, FileText, ActivityIcon } from "lucide-react"
-import { format } from "date-fns"
+import { ExternalLink, ArrowRight, FileText, ActivityIcon } from 'lucide-react'
 import { useToast } from "@/hooks/use-toast"
+
+function formatDateTime(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }) + " at " + date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  })
+}
+
+function formatDateTimeShort(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }) + " at " + date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  })
+}
 
 interface Deal {
   id: number
@@ -107,7 +130,7 @@ export function DealDrawer({ deal, open, onOpenChange }: DealDrawerProps) {
 
               <div>
                 <label className="text-sm font-medium text-gray-700">Last Activity</label>
-                <p className="mt-1 text-sm text-gray-900">{format(new Date(deal.last_activity), "PPP 'at' p")}</p>
+                <p className="mt-1 text-sm text-gray-900">{formatDateTime(new Date(deal.last_activity))}</p>
               </div>
 
               <div>
@@ -171,7 +194,7 @@ export function DealDrawer({ deal, open, onOpenChange }: DealDrawerProps) {
                               {activity.type}
                             </Badge>
                             <span className="text-xs text-gray-500">
-                              {format(new Date(activity.timestamp), "MMM d, yyyy 'at' h:mm a")}
+                              {formatDateTimeShort(new Date(activity.timestamp))}
                             </span>
                           </div>
                           <p className="mt-2 text-sm text-gray-700">{activity.description}</p>

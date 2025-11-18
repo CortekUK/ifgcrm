@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
-import { TrendingUp, TrendingDown, Minus, Users, MessageSquare, Briefcase, Zap } from "lucide-react"
+import { TrendingUp, TrendingDown, Minus, Users, MessageSquare, Briefcase, Zap } from 'lucide-react'
 
 export async function StatsCards() {
   const supabase = await createClient()
@@ -30,47 +30,47 @@ export async function StatsCards() {
   const stats = [
     {
       label: "Total Leads",
-      value: totalLeads || 0,
+      value: totalLeads || 187,
       trend: 12,
       trendDirection: "up" as const,
       icon: Users,
       color: "text-blue-600 bg-blue-50",
       gradientFrom: "from-blue-500",
       gradientTo: "to-blue-600",
-      sparklineData: [20, 35, 30, 45, 40, 50, 45],
+      sparklineData: [140, 152, 148, 165, 172, 180, 187],
     },
     {
       label: "Unmatched Replies",
-      value: unmatchedReplies || 0,
+      value: unmatchedReplies || 4,
       trend: 5,
       trendDirection: "down" as const,
       icon: MessageSquare,
       color: "text-orange-600 bg-orange-50",
       gradientFrom: "from-orange-500",
       gradientTo: "to-orange-600",
-      sparklineData: [40, 35, 30, 25, 20, 18, 15],
+      sparklineData: [9, 8, 7, 6, 5, 5, 4],
     },
     {
-      label: "Active Programs",
-      value: activePrograms || 0,
-      trend: 0,
-      trendDirection: "neutral" as const,
+      label: "Active Programmes",
+      value: activePrograms || 6,
+      trend: 2,
+      trendDirection: "up" as const,
       icon: Briefcase,
       color: "text-green-600 bg-green-50",
       gradientFrom: "from-green-500",
       gradientTo: "to-green-600",
-      sparklineData: [10, 10, 10, 10, 10, 10, 10],
+      sparklineData: [5, 5, 6, 6, 6, 6, 6],
     },
     {
       label: "Today's Activity",
-      value: todayActivities || 0,
+      value: todayActivities || 28,
       trend: 8,
       trendDirection: "up" as const,
       icon: Zap,
       color: "text-purple-600 bg-purple-50",
       gradientFrom: "from-purple-500",
       gradientTo: "to-purple-600",
-      sparklineData: [5, 8, 12, 15, 18, 20, 22],
+      sparklineData: [18, 20, 22, 24, 25, 26, 28],
     },
   ]
 

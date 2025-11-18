@@ -15,9 +15,9 @@ export function AppLayout({ children, user, title }: AppLayoutProps) {
       <AppSidebar />
 
       {/* Main content area - adjusts based on sidebar width */}
-      <div className="flex-1 lg:pl-60">
+      <div className="flex-1 lg:pl-60 max-w-full overflow-hidden">
         <AppHeader user={user} title={title} />
-        <main className="p-6">{children}</main>
+        <main className="p-6 max-w-full">{children}</main>
       </div>
     </div>
   )

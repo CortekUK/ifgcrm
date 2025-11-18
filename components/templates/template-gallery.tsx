@@ -7,9 +7,16 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Mail, MessageSquare, MoreVertical, Edit, Copy, Trash2, Eye, Search } from "lucide-react"
-import { format } from "date-fns"
+import { Mail, MessageSquare, MoreVertical, Edit, Copy, Trash2, Eye, Search } from 'lucide-react'
 import { useToast } from "@/hooks/use-toast"
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  })
+}
 
 interface Template {
   id: string
@@ -251,7 +258,7 @@ export function TemplateGallery({ onEdit, onPreview }: TemplateGalleryProps) {
                 </Badge>
 
                 <div className="mt-3 space-y-1 text-xs text-gray-500">
-                  <div>Updated {format(new Date(template.updated_at), "MMM d, yyyy")}</div>
+                  <div>Updated {formatDate(new Date(template.updated_at))}</div>
                   <div>Used {template.usage_count}x</div>
                 </div>
 

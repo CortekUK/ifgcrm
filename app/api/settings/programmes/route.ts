@@ -1,39 +1,40 @@
 import { NextResponse } from "next/server"
+import { createServerClient } from "@/lib/supabase/server"
 
 export async function GET() {
-  // Mock programmes data with pipeline associations
-  const mockProgrammes = [
-    {
-      id: 1,
-      name: "US College 2026",
-      pipelineId: 1,
-      pipelineName: "US College Recruitment",
-      active: true,
-    },
-    {
-      id: 2,
-      name: "US College 2027",
-      pipelineId: 1,
-      pipelineName: "US College Recruitment",
-      active: true,
-    },
-    {
-      id: 3,
-      name: "European Academy",
-      pipelineId: 2,
-      pipelineName: "European Pathway",
-      active: true,
-    },
-    {
-      id: 4,
-      name: "UK Programme",
-      pipelineId: null,
-      pipelineName: null,
-      active: false,
-    },
-  ]
+  try {
+    const supabase = await createServerClient()
 
-  return NextResponse.json(mockProgrammes)
+    const { data: programmes, error } = await supabase
+      .from("programs")
+      .select("id, name, description, color")
+      .order("name")
+
+    if (error) throw error
+
+    return NextResponse.json(programmes || [])
+  } catch (error) {
+    console.error("[v0] Error fetching programmes:", error)
+    // Return mock data as fallback
+    const mockProgrammes = [
+      {
+        id: "1",
+        name: "US College 2026",
+        active: true,
+      },
+      {
+        id: "2",
+        name: "US College 2027",
+        active: true,
+      },
+      {
+        id: "3",
+        name: "European Academy",
+        active: true,
+      },
+    ]
+    return NextResponse.json(mockProgrammes)
+  }
 }
 
 export async function POST(request: Request) {

@@ -8,6 +8,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     1: {
       id: 1,
       name: "US College Recruitment",
+      dealsWon: 8, // Added metric
+      conversionRate: 53.3, // Added metric (8 won / 15 total * 100)
       stages: [
         {
           id: 1,
@@ -242,6 +244,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     2: {
       id: 2,
       name: "European Pathway",
+      dealsWon: 2,
+      conversionRate: 50.0,
       stages: [
         {
           id: 11,
@@ -296,6 +300,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     3: {
       id: 3,
       name: "UK Academy Pipeline",
+      dealsWon: 1,
+      conversionRate: 33.3,
       stages: [
         {
           id: 21,

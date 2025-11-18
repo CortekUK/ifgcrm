@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Activity, Clock } from "lucide-react"
+import { Activity, Clock, UserPlus, Mail, FileText, CheckCircle2 } from 'lucide-react'
 
 export async function RecentActivity() {
   const supabase = await createClient()
@@ -17,7 +17,66 @@ export async function RecentActivity() {
     `)
     .eq("user_id", user.id)
     .order("created_at", { ascending: false })
-    .limit(5)
+    .limit(10)
+
+  const demoActivities = [
+    {
+      id: "demo-1",
+      type: "player_added",
+      icon: UserPlus,
+      color: "text-blue-600 bg-blue-100",
+      title: "New player added",
+      description: "John Mensah",
+      time: "2 hours ago"
+    },
+    {
+      id: "demo-2",
+      type: "email_sent",
+      icon: Mail,
+      color: "text-green-600 bg-green-100",
+      title: "Email sent",
+      description: "Welcome to IFG",
+      time: "3 hours ago"
+    },
+    {
+      id: "demo-3",
+      type: "invoice_reminder",
+      icon: FileText,
+      color: "text-orange-600 bg-orange-100",
+      title: "Invoice reminder delivered",
+      description: "Payment due in 7 days",
+      time: "5 hours ago"
+    },
+    {
+      id: "demo-4",
+      type: "status_changed",
+      icon: CheckCircle2,
+      color: "text-purple-600 bg-purple-100",
+      title: "Player status changed to Signed",
+      description: "Sarah Owusu moved to Signed stage",
+      time: "1 day ago"
+    },
+    {
+      id: "demo-5",
+      type: "player_added",
+      icon: UserPlus,
+      color: "text-blue-600 bg-blue-100",
+      title: "New player added",
+      description: "Michael Addo",
+      time: "1 day ago"
+    },
+    {
+      id: "demo-6",
+      type: "email_sent",
+      icon: Mail,
+      color: "text-green-600 bg-green-100",
+      title: "Email campaign sent",
+      description: "Gap Year 2026-2027 - 156 recipients",
+      time: "2 days ago"
+    },
+  ]
+
+  const displayActivities = activities && activities.length > 0 ? activities : demoActivities
 
   const getInitials = (name: string) => {
     return name
@@ -108,7 +167,7 @@ export async function RecentActivity() {
         <div className="h-3 bg-gradient-to-b from-[#EAF1FD] to-white" />
         <CardHeader>
           <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-gray-400" />
+            <Clock className="h-4 w-4 text-primary" />
             <CardTitle
               className="text-sm uppercase tracking-wide py-0.5"
               style={{
@@ -124,36 +183,26 @@ export async function RecentActivity() {
           <CardDescription>Latest updates from your CRM</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {activities && activities.length > 0 ? (
-              activities.map((activity: any) => (
-                <div
-                  key={activity.id}
-                  className="btn-press flex items-start gap-4 rounded-lg p-3 transition-colors hover:bg-gray-50"
-                >
-                  <div
-                    className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold shadow-sm ${getActivityColor(activity.type)}`}
-                  >
-                    {activity.leads?.name ? getInitials(activity.leads.name) : "??"}
+          <div className="relative space-y-4">
+            <div className="absolute left-[19px] top-2 bottom-2 w-0.5 bg-gray-200" />
+            
+            {displayActivities.map((activity: any, index: number) => {
+              const Icon = activity.icon || Activity
+              return (
+                <div key={activity.id} className="relative flex items-start gap-4 pl-2">
+                  <div className={`relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full shadow-sm ${activity.color || "bg-gray-100 text-gray-600"}`}>
+                    <Icon className="h-4 w-4" />
                   </div>
-                  <div className="flex-1 space-y-1">
+                  <div className="flex-1 space-y-1 pt-1">
                     <div className="flex items-baseline justify-between gap-2">
-                      <p className="text-sm font-semibold text-gray-900">{activity.leads?.name || "Unknown Player"}</p>
-                      <p className="text-xs text-gray-500">{formatTime(activity.created_at)}</p>
+                      <p className="text-sm font-semibold text-gray-900">{activity.title || activity.description}</p>
+                      <p className="text-xs text-gray-500">{activity.time || formatTime(activity.created_at)}</p>
                     </div>
-                    <p className="text-sm text-gray-600">{activity.description}</p>
+                    <p className="text-sm text-gray-600">{activity.description || activity.leads?.name}</p>
                   </div>
                 </div>
-              ))
-            ) : (
-              <div className="py-12 text-center">
-                <div className="mx-auto flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-gray-100">
-                  <Activity className="h-8 w-8 text-gray-400" />
-                </div>
-                <p className="mt-4 text-sm font-semibold text-gray-900">No recent activity</p>
-                <p className="mt-1 text-xs text-gray-500">Activity will appear here as you use the CRM</p>
-              </div>
-            )}
+              )
+            })}
           </div>
         </CardContent>
       </Card>

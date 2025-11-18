@@ -26,7 +26,11 @@ export function PlayersSummary() {
     try {
       const response = await fetch("/api/players/summary")
       const data = await response.json()
-      setSummary(data)
+      setSummary({
+        total_players: data.total_players ?? 0,
+        active_in_pipeline: data.active_in_pipeline ?? 0,
+        signed_players: data.signed_players ?? 0,
+      })
     } catch (error) {
       console.error("Failed to fetch summary:", error)
     } finally {
@@ -105,7 +109,7 @@ export function PlayersSummary() {
                   {stat.label}
                 </p>
                 <p className="font-semibold" style={{ fontSize: "28px", fontWeight: 600, color: "#0A0A0A" }}>
-                  {stat.value.toLocaleString()}
+                  {(stat.value ?? 0).toLocaleString()}
                 </p>
               </div>
             </div>

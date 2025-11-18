@@ -6,54 +6,30 @@ export async function GET(request: NextRequest) {
   const type = searchParams.get("type") || "all"
   const status = searchParams.get("status") || "all"
 
-  // Mock campaigns data
   const allCampaigns = [
     {
       id: "1",
-      name: "Summer Recruitment 2025",
+      name: "Gap Year 2026-2027",
       type: "email",
       status: "sent",
-      sent: 138,
-      open_rate: 45.2,
-      click_rate: 23.1,
+      sent: 156,
+      open_rate: 52.8,
+      click_rate: 28.4,
       last_sent: "2025-01-05T10:00:00Z",
       thumbnail: "/email-campaign-recruitment.jpg",
       created_at: "2025-01-05T10:00:00Z",
     },
     {
       id: "2",
-      name: "Trial Invitation - Week 2",
-      type: "sms",
-      status: "sent",
-      sent: 89,
-      open_rate: 0,
-      click_rate: 67.4,
-      last_sent: "2025-01-07T14:30:00Z",
-      created_at: "2025-01-07T14:30:00Z",
-    },
-    {
-      id: "3",
-      name: "Follow-up: Elite Programme",
+      name: "Pre-Season Training Camp Invites",
       type: "email",
       status: "scheduled",
       sent: 0,
       open_rate: 0,
       click_rate: 0,
-      last_sent: "2025-01-10T09:00:00Z",
+      last_sent: "2025-01-15T09:00:00Z",
       thumbnail: "/elite-football-program.jpg",
       created_at: "2025-01-08T09:00:00Z",
-    },
-    {
-      id: "4",
-      name: "Welcome Message - New Players",
-      type: "email",
-      status: "draft",
-      sent: 0,
-      open_rate: 0,
-      click_rate: 0,
-      last_sent: "2025-01-08T16:00:00Z",
-      thumbnail: "/welcome-message-football.jpg",
-      created_at: "2025-01-08T16:00:00Z",
     },
   ]
 

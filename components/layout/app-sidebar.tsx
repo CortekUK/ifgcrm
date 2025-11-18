@@ -1,26 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname } from 'next/navigation'
 import { cn } from "@/lib/utils"
-import {
-  LayoutDashboard,
-  Users,
-  GitBranch,
-  Megaphone,
-  FileText,
-  BarChart3,
-  Receipt,
-  CreditCard,
-  Settings,
-  UserCog,
-  ChevronLeft,
-  ChevronRight,
-  ChevronDown,
-  ChevronUp,
-  Workflow,
-  MapPin,
-} from "lucide-react"
+import { LayoutDashboard, Users, GitBranch, Megaphone, FileText, BarChart3, Receipt, CreditCard, Settings, UserCog, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Workflow, MapPin, MessageSquare } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
 
@@ -36,8 +19,10 @@ const navigationGroups = [
   {
     name: "Marketing",
     items: [
+      { name: "Contacts", href: "/contacts", icon: Users },
       { name: "Campaigns", href: "/campaigns", icon: Megaphone },
       { name: "Automations", href: "/automations", icon: Workflow },
+      { name: "SMS Replies", href: "/sms-replies", icon: MessageSquare },
       { name: "Templates", href: "/templates", icon: FileText },
       { name: "Reports", href: "/reports", icon: BarChart3 },
     ],
