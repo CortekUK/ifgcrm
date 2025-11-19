@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Mail, TrendingUp, Users, CheckCircle2, XCircle, Clock } from 'lucide-react'
 
@@ -57,18 +57,18 @@ export function RunDetailDrawer({ run, open, onClose }: RunDetailDrawerProps) {
   const statusInfo = getStatusBadge()
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:w-[600px] sm:max-w-[600px] overflow-y-auto">
-        <SheetHeader className="border-b pb-4 mb-5">
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-3xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader className="border-b pb-4 mb-5">
           <div className="flex items-start justify-between">
             <div className="flex items-start gap-3 flex-1">
               <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
                 <Mail className="h-5 w-5 text-white" />
               </div>
               <div className="flex-1 min-w-0">
-                <SheetTitle className="text-lg font-bold text-gray-900 mb-1">
+                <DialogTitle className="text-lg font-bold text-gray-900 mb-1">
                   {run.workflowName}
-                </SheetTitle>
+                </DialogTitle>
                 <p className="text-sm text-gray-600">
                   Batch run • {run.totalRecipients.toLocaleString()} contacts
                 </p>
@@ -81,7 +81,7 @@ export function RunDetailDrawer({ run, open, onClose }: RunDetailDrawerProps) {
               <span className="text-xs text-gray-500">{formatTimestamp(run.startedAt)}</span>
             </div>
           </div>
-        </SheetHeader>
+        </DialogHeader>
 
         <div className="mb-6">
           <div className="bg-gray-50 px-3 py-2 rounded-t-lg border border-b-0 border-gray-200">
@@ -190,7 +190,7 @@ export function RunDetailDrawer({ run, open, onClose }: RunDetailDrawerProps) {
             </div>
           </div>
         )}
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

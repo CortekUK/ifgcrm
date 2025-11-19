@@ -1,0 +1,3 @@
+{
+  "/api/automations/[workflowId]/steps/[stepId]/route": "app/api/automations/[workflowId]/steps/[stepId]/route.js"
+}

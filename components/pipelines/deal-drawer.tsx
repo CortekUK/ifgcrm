@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -99,12 +99,12 @@ export function DealDrawer({ deal, open, onOpenChange }: DealDrawerProps) {
   if (!deal) return null
 
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-[440px] overflow-y-auto transition-transform duration-250">
-        <SheetHeader>
-          <SheetTitle className="text-2xl">{deal.player_name}</SheetTitle>
-          <SheetDescription>Pipeline deal details</SheetDescription>
-        </SheetHeader>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader>
+          <DialogTitle className="text-2xl">{deal.player_name}</DialogTitle>
+          <DialogDescription>Pipeline deal details</DialogDescription>
+        </DialogHeader>
 
         <Tabs defaultValue="details" className="mt-6">
           <TabsList className="grid w-full grid-cols-3">
@@ -214,7 +214,7 @@ export function DealDrawer({ deal, open, onOpenChange }: DealDrawerProps) {
             </div>
           </TabsContent>
         </Tabs>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

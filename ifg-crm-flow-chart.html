@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFG CRM System Flow Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+        .chart-container {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        .chart-title {
+            font-size: 1.5em;
+            color: #444;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .legend {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .legend h3 {
+            margin-top: 0;
+            color: #555;
+        }
+        .legend-item {
+            display: inline-block;
+            margin: 5px 15px 5px 0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .manual { background: #ffe0e0; }
+        .automated { background: #e0ffe0; }
+        .integration { background: #e0e0ff; }
+        .pain-point { background: #fff0e0; }
+
+        /* Mermaid diagram styling */
+        .mermaid {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 IFG CRM System Flow</h1>
+        <div class="subtitle">Complete Customer Journey & System Architecture</div>
+
+        <!-- Main Flow Chart -->
+        <div class="chart-container">
+            <div class="chart-title">📊 Complete System Flow</div>
+            <div class="mermaid">
+graph TB
+    %% Lead Acquisition Sources
+    subgraph "🎯 LEAD SOURCES"
+        WF[Website Forms]
+        BD[Brochure Downloads]
+        SMS1[SMS Campaigns<br/>ClickSend]
+        ME[Manual Entry<br/>Tournaments]
+    end
+
+    %% Entry Processing
+    subgraph "📥 ENTRY PROCESSING"
+        DC[Direct Creation]
+        CSV[CSV Upload]
+        MM[Manual Matching<br/>❌ Pain Point]
+        DE[Direct Entry]
+    end
+
+    %% CRM Core
+    subgraph "💼 CRM CORE"
+        LC[Lead Created<br/>130,000+ contacts]
+        PA[Program Assignment<br/>Gap Year, UConn, etc.]
+        RA[Recruiter Assignment<br/>Even Distribution]
+    end
+
+    %% Pipeline Stages
+    subgraph "📈 PIPELINE STAGES"
+        S1[Initial Lead]
+        S2[Initial Contact]
+        S3[Zoom Scheduled]
+        S4[Follow-up]
+        S5[Application Started]
+        S6[Documents Received]
+        S7[Submitted]
+        S8[Accepted]
+    end
+
+    %% Automation Engine
+    subgraph "⚡ AUTOMATION ENGINE"
+        AE1[3-Email Sequence<br/>Day 1, 3, 5]
+        AE2[Call Booking<br/>Calendly Integration]
+        AE3[Document Request]
+        AE4[Invoice Generation]
+    end
+
+    %% Communication Channels
+    subgraph "📧 COMMUNICATIONS"
+        EC[Email Campaigns<br/>Weekly Newsletters]
+        SC[SMS Blasts<br/>£40k/year]
+        AC[Automated Emails<br/>Resend/SendGrid]
+    end
+
+    %% Payment System
+    subgraph "💳 PAYMENT SYSTEM"
+        IG[Invoice Generated<br/>£10,000 program fee]
+        SP[Stripe Payment<br/>Integration Needed]
+        PT[Payment Tracking]
+    end
+
+    %% Player Portal
+    subgraph "👤 PLAYER PORTAL"
+        PL[Player Login<br/>Unique Access]
+        VB[View Balance]
+        MP[Make Payments]
+        UD[Upload Documents<br/>Passport, Transcripts]
+        TC[Track Checklist]
+    end
+
+    %% Connections
+    WF -->|Automatic| DC
+    BD -->|Manual| CSV
+    SMS1 -->|Returns Numbers Only| MM
+    ME -->|Direct| DE
+
+    DC --> LC
+    CSV --> LC
+    MM --> LC
+    DE --> LC
+
+    LC --> PA
+    PA --> RA
+    RA --> S1
+
+    S1 -->|Trigger| AE1
+    S1 -->|Manual Move| S2
+    S2 -->|Books Call| S3
+    S3 -->|Stop Emails| AE2
+    S3 -->|After Call| S4
+    S4 -->|Trigger| AE3
+    S4 --> S5
+    S5 --> S6
+    S6 --> S7
+    S7 --> S8
+    S8 -->|Trigger| AE4
+
+    AE1 -.->|Send via| AC
+    AE2 -.->|Integration| S3
+    AE3 -.->|Send via| AC
+    AE4 --> IG
+
+    IG --> SP
+    SP --> PT
+    PT --> PL
+
+    PL --> VB
+    PL --> MP
+    PL --> UD
+    PL --> TC
+
+    LC -.->|Segment & Send| EC
+    LC -.->|Export List| SC
+
+    %% Styling
+    classDef manual fill:#ffe0e0
+    classDef automated fill:#e0ffe0
+    classDef integration fill:#e0e0ff
+    classDef painpoint fill:#fff0e0,stroke:#ff0000,stroke-width:3px
+
+    class WF,DC,AE1,AE2,AE3,AE4,AC,EC automated
+    class BD,CSV,ME,DE,MM manual
+    class SMS1,SP,PL integration
+    class MM painpoint
+            </div>
+        </div>
+
+        <!-- Email Automation Flow -->
+        <div class="chart-container">
+            <div class="chart-title">📧 Email Automation Workflow</div>
+            <div class="mermaid">
+graph LR
+    LE[Lead Enters Pipeline] --> E1[Email 1<br/>Immediate Welcome]
+    E1 -->|No Response| W1[Wait 3 Days]
+    W1 --> E2[Email 2<br/>Follow-up]
+    E2 -->|No Response| W2[Wait 5 Days]
+    W2 --> E3[Email 3<br/>Final Attempt]
+
+    E1 -->|Books Call| STOP1[Stop Sequence]
+    E2 -->|Books Call| STOP2[Stop Sequence]
+    E3 -->|Books Call| STOP3[Stop Sequence]
+
+    STOP1 --> ZC[Zoom Confirmation]
+    STOP2 --> ZC
+    STOP3 --> ZC
+
+    ZC --> CALL[Zoom Call]
+    CALL --> FU[Follow-up Email<br/>with Forms]
+
+    style LE fill:#e0ffe0
+    style STOP1 fill:#ffe0e0
+    style STOP2 fill:#ffe0e0
+    style STOP3 fill:#ffe0e0
+            </div>
+        </div>
+
+        <!-- SMS Integration Flow -->
+        <div class="chart-container">
+            <div class="chart-title">📱 SMS Campaign Flow (Current vs Desired)</div>
+            <div class="mermaid">
+graph TB
+    subgraph "❌ CURRENT PROCESS"
+        CE[Export from CRM] --> CU[Upload to ClickSend]
+        CU --> CS[Send SMS Blast]
+        CS --> CR[Receive Responses<br/>Numbers Only]
+        CR --> CM[Manual Matching<br/>Time Consuming]
+        CM --> CUP[Manual CRM Update]
+    end
+
+    subgraph "✅ DESIRED PROCESS"
+        DS[Select Contacts<br/>in CRM] --> DSS[Send via API]
+        DSS --> DR[Receive Responses]
+        DR --> DAM[Auto-Match<br/>to Contacts]
+        DAM --> DAU[Auto-Update<br/>Pipeline Status]
+    end
+
+    style CM fill:#fff0e0,stroke:#ff0000,stroke-width:3px
+    style DAM fill:#e0ffe0
+    style DAU fill:#e0ffe0
+            </div>
+        </div>
+
+        <!-- Player Journey -->
+        <div class="chart-container">
+            <div class="chart-title">👤 Player Journey Example: John Smith</div>
+            <div class="mermaid">
+sequenceDiagram
+    participant J as John Smith
+    participant CS as ClickSend SMS
+    participant CRM as IFG CRM
+    participant R as Recruiter (Chris)
+    participant C as Calendly
+    participant S as Stripe
+    participant P as Player Portal
+
+    CS->>J: Day 1: "Interested in scholarship?"
+    J->>CS: "YES"
+    CS->>CRM: Phone number response
+    Note over CRM: Auto-match & create lead
+    CRM->>R: Assign to Chris
+    CRM->>J: Email 1: Welcome
+
+    Note over J: Day 3: No response
+    CRM->>J: Email 2: Follow-up
+
+    Note over J: Day 5: Clicks link
+    J->>C: Books call
+    C->>CRM: Update status
+    CRM->>J: Stop emails, send confirmation
+
+    Note over J,R: Day 8: Zoom Call
+    R->>CRM: Move to Follow-up
+    CRM->>J: Registration forms
+
+    J->>CRM: Day 15: Submit application
+    R->>CRM: Move to Accepted
+    CRM->>J: Invoice £10,000
+
+    J->>S: Pay £2,000 deposit
+    S->>CRM: Payment confirmed
+    CRM->>P: Enable portal access
+
+    J->>P: Login to portal
+    P->>J: Show balance: £8,000
+    J->>P: Upload passport
+    P->>CRM: Update documents
+            </div>
+        </div>
+
+        <!-- Integration Architecture -->
+        <div class="chart-container">
+            <div class="chart-title">🔧 System Integration Architecture</div>
+            <div class="mermaid">
+graph TB
+    subgraph "🌐 EXTERNAL SYSTEMS"
+        WP[WordPress Website]
+        CS2[ClickSend API]
+        ST[Stripe API]
+        RS[Resend/SendGrid]
+        CL[Calendly]
+        XR[Xero<br/>Optional]
+    end
+
+    subgraph "💼 IFG CRM CORE"
+        API[API Layer]
+        DB[(Database<br/>130,000+ contacts)]
+        WF2[Workflow Engine]
+        UI[Admin Interface]
+        PP[Player Portal]
+    end
+
+    subgraph "👥 USERS"
+        STAFF[Staff Users<br/>Nathan, Chris, etc.]
+        PLAYERS[Players<br/>Read-only access]
+    end
+
+    WP -->|Forms| API
+    CS2 <-->|SMS| API
+    ST <-->|Payments| API
+    RS -->|Email| API
+    CL <-->|Bookings| API
+    XR -.->|Accounting| API
+
+    API <--> DB
+    API <--> WF2
+    DB <--> UI
+    DB <--> PP
+
+    STAFF --> UI
+    PLAYERS --> PP
+
+    style DB fill:#e0e0ff
+    style API fill:#e0ffe0
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="chart-container">
+            <div class="chart-title">📊 Key System Metrics</div>
+            <div class="mermaid">
+graph LR
+    subgraph "📈 SCALE"
+        C1[130,000+ Contacts]
+        C2[Multiple Programs]
+        C3[10+ Recruiters]
+        C4[£40k/year SMS]
+        C5[£2,500/month Current Cost]
+    end
+
+    subgraph "⚡ AUTOMATIONS"
+        A1[3-Step Email Sequences]
+        A2[Annual Updates]
+        A3[Weekly Campaigns]
+        A4[Invoice Generation]
+    end
+
+    subgraph "🎯 GOALS"
+        G1[Reduce Cost]
+        G2[Automate SMS Matching]
+        G3[Player Self-Service]
+        G4[Unified System]
+    end
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <h3>Legend</h3>
+            <span class="legend-item automated">✅ Automated Process</span>
+            <span class="legend-item manual">⚠️ Manual Process</span>
+            <span class="legend-item integration">🔗 Integration Required</span>
+            <span class="legend-item pain-point">❌ Current Pain Point</span>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#e0e0ff',
+                primaryTextColor: '#333',
+                primaryBorderColor: '#7C0000',
+                lineColor: '#666',
+                secondaryColor: '#e0ffe0',
+                tertiaryColor: '#ffe0e0'
+            },
+            flowchart: {
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

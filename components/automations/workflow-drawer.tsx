@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -109,9 +109,9 @@ export function WorkflowDrawer({ workflow, open, onClose }: WorkflowDrawerProps)
 
   return (
     <>
-      <Sheet open={open} onOpenChange={onClose}>
-        <SheetContent className="w-full sm:w-[500px] sm:max-w-[500px] overflow-y-auto">
-          <SheetHeader className="border-b pb-4 mb-5">
+      <Dialog open={open} onOpenChange={onClose}>
+        <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+          <DialogHeader className="border-b pb-4 mb-5">
             {isLoading ? (
               <div className="flex items-start gap-3">
                 <div className="w-11 h-11 rounded-lg bg-[#E5E7EB] animate-pulse flex-shrink-0" />
@@ -126,12 +126,12 @@ export function WorkflowDrawer({ workflow, open, onClose }: WorkflowDrawerProps)
                   <workflow.icon className="h-5 w-5 text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <SheetTitle className="text-lg font-bold text-gray-900">{workflow.name}</SheetTitle>
+                  <DialogTitle className="text-lg font-bold text-gray-900">{workflow.name}</DialogTitle>
                   <p className="text-sm text-gray-600 mt-0.5">{workflow.description}</p>
                 </div>
               </div>
             )}
-          </SheetHeader>
+          </DialogHeader>
 
           {!isLoading && !hasError && workflow.hasError && (
             <div className="mb-4 flex items-center justify-between rounded-lg border border-red-200 bg-red-50 px-4 py-3 border-l-4 border-l-red-500">
@@ -294,8 +294,8 @@ export function WorkflowDrawer({ workflow, open, onClose }: WorkflowDrawerProps)
               </Button>
             </div>
           )}
-        </SheetContent>
-      </Sheet>
+        </DialogContent>
+      </Dialog>
 
       {/* Step Details Drawer */}
       {selectedStep && (

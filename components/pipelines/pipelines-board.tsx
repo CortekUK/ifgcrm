@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -62,9 +63,13 @@ interface PipelineData {
 }
 
 export function PipelinesBoard() {
+  const searchParams = useSearchParams()
+  const urlPipelineId = searchParams.get("pipelineId")
+  const urlDealId = searchParams.get("dealId")
+
   const [pipelines, setPipelines] = useState<Pipeline[]>([])
   const [recruiters, setRecruiters] = useState<Recruiter[]>([])
-  const [selectedPipeline, setSelectedPipeline] = useState<string>("")
+  const [selectedPipeline, setSelectedPipeline] = useState<string>(urlPipelineId || "")
   const [selectedRecruiter, setSelectedRecruiter] = useState<string>("all")
   const [dateRange, setDateRange] = useState<{ from: Date | null; to: Date | null }>({ from: null, to: null })
   const [sortBy, setSortBy] = useState<string>("newest")
@@ -96,6 +101,30 @@ export function PipelinesBoard() {
   }, [])
 
   useEffect(() => {
+    if (urlPipelineId) {
+      setSelectedPipeline(urlPipelineId)
+    }
+  }, [urlPipelineId])
+
+  useEffect(() => {
+    if (urlDealId && pipelineData) {
+      // Find deal in the loaded pipeline data
+      let foundDeal = null
+      for (const stage of pipelineData.stages) {
+        const deal = stage.deals.find((d) => d.id.toString() === urlDealId)
+        if (deal) {
+          foundDeal = deal
+          break
+        }
+      }
+      if (foundDeal) {
+        setSelectedDeal(foundDeal)
+        setIsDrawerOpen(true)
+      }
+    }
+  }, [urlDealId, pipelineData])
+
+  useEffect(() => {
     fetch("/api/settings/recruiters")
       .then((res) => res.json())
       .then((data) => setRecruiters(data))
@@ -114,8 +143,27 @@ export function PipelinesBoard() {
   }, [selectedPipeline])
 
   useEffect(() => {
-    const handleDealCreated = () => {
-      if (selectedPipeline) {
+    const handleDealCreated = (event: any) => {
+      const newDeal = event.detail
+      if (newDeal && pipelineData) {
+        // Optimistically update state for mock data
+        setPipelineData((prev) => {
+          if (!prev) return prev
+          return {
+            ...prev,
+            stages: prev.stages.map((stage) => {
+              if (stage.id === newDeal.stage_id) {
+                return {
+                  ...stage,
+                  deals: [...stage.deals, newDeal],
+                }
+              }
+              return stage
+            }),
+          }
+        })
+      } else if (selectedPipeline) {
+        // Fallback to refetch
         fetch(`/api/pipelines/${selectedPipeline}/stages`)
           .then((res) => res.json())
           .then((data) => setPipelineData(data))
@@ -124,7 +172,7 @@ export function PipelinesBoard() {
 
     window.addEventListener("dealCreated", handleDealCreated)
     return () => window.removeEventListener("dealCreated", handleDealCreated)
-  }, [selectedPipeline])
+  }, [selectedPipeline, pipelineData])
 
   useEffect(() => {
     const handleStageCreated = () => {
@@ -258,48 +306,48 @@ export function PipelinesBoard() {
 
   const filteredAndSortedData = pipelineData
     ? {
-        ...pipelineData,
-        stages: pipelineData.stages.map((stage) => {
-          let filteredDeals = stage.deals
+      ...pipelineData,
+      stages: pipelineData.stages.map((stage) => {
+        let filteredDeals = stage.deals
 
-          if (searchQuery) {
-            filteredDeals = filteredDeals.filter((deal) =>
-              deal.player_name.toLowerCase().includes(searchQuery.toLowerCase()),
-            )
-          }
+        if (searchQuery) {
+          filteredDeals = filteredDeals.filter((deal) =>
+            deal.player_name.toLowerCase().includes(searchQuery.toLowerCase()),
+          )
+        }
 
-          if (selectedRecruiter !== "all") {
-            filteredDeals = filteredDeals.filter(
-              (deal) => deal.recruiter === recruiters.find((r) => r.id.toString() === selectedRecruiter)?.name,
-            )
-          }
+        if (selectedRecruiter !== "all") {
+          filteredDeals = filteredDeals.filter(
+            (deal) => deal.recruiter === recruiters.find((r) => r.id.toString() === selectedRecruiter)?.name,
+          )
+        }
 
-          if (dateRange.from || dateRange.to) {
-            filteredDeals = filteredDeals.filter((deal) => {
-              const dealDate = new Date(deal.last_activity)
-              if (dateRange.from && dealDate < dateRange.from) return false
-              if (dateRange.to && dealDate > dateRange.to) return false
-              return true
-            })
-          }
-
-          const sortedDeals = [...filteredDeals].sort((a, b) => {
-            if (sortBy === "newest") {
-              return new Date(b.last_activity).getTime() - new Date(a.last_activity).getTime()
-            } else if (sortBy === "value") {
-              return (b.deal_value || 0) - (a.deal_value || 0)
-            } else if (sortBy === "recruiter") {
-              return a.recruiter.localeCompare(b.recruiter)
-            }
-            return 0
+        if (dateRange.from || dateRange.to) {
+          filteredDeals = filteredDeals.filter((deal) => {
+            const dealDate = new Date(deal.last_activity)
+            if (dateRange.from && dealDate < dateRange.from) return false
+            if (dateRange.to && dealDate > dateRange.to) return false
+            return true
           })
+        }
 
-          return {
-            ...stage,
-            deals: sortedDeals,
+        const sortedDeals = [...filteredDeals].sort((a, b) => {
+          if (sortBy === "newest") {
+            return new Date(b.last_activity).getTime() - new Date(a.last_activity).getTime()
+          } else if (sortBy === "value") {
+            return (b.deal_value || 0) - (a.deal_value || 0)
+          } else if (sortBy === "recruiter") {
+            return a.recruiter.localeCompare(b.recruiter)
           }
-        }),
-      }
+          return 0
+        })
+
+        return {
+          ...stage,
+          deals: sortedDeals,
+        }
+      }),
+    }
     : null
 
   const totalPlayers = filteredAndSortedData
@@ -308,9 +356,9 @@ export function PipelinesBoard() {
 
   const totalValue = filteredAndSortedData
     ? filteredAndSortedData.stages.reduce(
-        (sum, stage) => sum + stage.deals.reduce((stageSum, deal) => stageSum + (deal.deal_value || 0), 0),
-        0,
-      )
+      (sum, stage) => sum + stage.deals.reduce((stageSum, deal) => stageSum + (deal.deal_value || 0), 0),
+      0,
+    )
     : 0
 
   return (

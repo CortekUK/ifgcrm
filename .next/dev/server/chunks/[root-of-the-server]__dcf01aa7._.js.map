@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///Users/ghulam/projects/ifgcrm/app/api/campaigns/send/route.ts"],"sourcesContent":["import { type NextRequest, NextResponse } from \"next/server\"\n\nexport async function POST(request: NextRequest) {\n  const body = await request.json()\n\n  // Mock sending a campaign\n  console.log(\"Sending campaign:\", body)\n\n  // Simulate API delay\n  await new Promise((resolve) => setTimeout(resolve, 1000))\n\n  return NextResponse.json({\n    success: true,\n    message: `Campaign sent to ${body.recipients === \"all\" ? \"all players\" : body.recipients}`,\n  })\n}\n"],"names":[],"mappings":";;;;AAAA;;AAEO,eAAe,KAAK,OAAoB;IAC7C,MAAM,OAAO,MAAM,QAAQ,IAAI;IAE/B,0BAA0B;IAC1B,QAAQ,GAAG,CAAC,qBAAqB;IAEjC,qBAAqB;IACrB,MAAM,IAAI,QAAQ,CAAC,UAAY,WAAW,SAAS;IAEnD,OAAO,gJAAY,CAAC,IAAI,CAAC;QACvB,SAAS;QACT,SAAS,CAAC,iBAAiB,EAAE,KAAK,UAAU,KAAK,QAAQ,gBAAgB,KAAK,UAAU,EAAE;IAC5F;AACF","debugId":null}}]
+}

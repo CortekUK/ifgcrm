@@ -1,5 +1,5 @@
 "use client"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -76,10 +76,10 @@ export function CampaignViewDrawer({ campaign, open, onClose }: CampaignViewDraw
   ]
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full overflow-y-auto sm:max-w-[480px]">
-        <SheetHeader>
-          <SheetTitle>{campaign.name}</SheetTitle>
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader>
+          <DialogTitle>{campaign.name}</DialogTitle>
           <div className="flex items-center gap-2 pt-2">
             <Badge variant="outline" className="capitalize">
               {campaign.type}
@@ -88,7 +88,7 @@ export function CampaignViewDrawer({ campaign, open, onClose }: CampaignViewDraw
               {campaign.status}
             </Badge>
           </div>
-        </SheetHeader>
+        </DialogHeader>
 
         <Tabs defaultValue="analytics" className="mt-6">
           <TabsList className="grid w-full grid-cols-3">
@@ -221,7 +221,7 @@ export function CampaignViewDrawer({ campaign, open, onClose }: CampaignViewDraw
             ))}
           </TabsContent>
         </Tabs>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

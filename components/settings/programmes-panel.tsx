@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -197,17 +197,19 @@ export function ProgrammesPanel() {
         </div>
       )}
 
-      <Sheet open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-        <SheetContent className="w-[440px] bg-muted transition-transform duration-250 ease-in-out sm:max-w-none">
-          <SheetHeader>
-            <SheetTitle>{editingProgramme ? "Edit programme" : "Add programme"}</SheetTitle>
-            <SheetDescription>
-              {editingProgramme
-                ? "Update the programme details below"
-                : "Create a new programme for managing player recruitment"}
-            </SheetDescription>
-          </SheetHeader>
-          <form onSubmit={handleSubmit} className="mt-6">
+      <Dialog open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+        <DialogContent className="max-w-2xl max-h-[90vh] my-4 flex flex-col overflow-hidden p-0">
+          <div className="px-6 pt-6 pb-4 border-b">
+            <DialogHeader>
+              <DialogTitle>{editingProgramme ? "Edit programme" : "Add programme"}</DialogTitle>
+              <DialogDescription>
+                {editingProgramme
+                  ? "Update the programme details below"
+                  : "Create a new programme for managing player recruitment"}
+              </DialogDescription>
+            </DialogHeader>
+          </div>
+          <form id="programme-form" onSubmit={handleSubmit} className="overflow-y-auto px-6 py-4 flex-1">
             <div className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Programme name *</Label>
@@ -254,17 +256,19 @@ export function ProgrammesPanel() {
                 />
               </div>
             </div>
-            <SheetFooter className="mt-6">
+          </form>
+          <div className="px-6 py-4 border-t">
+            <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setIsDrawerOpen(false)}>
                 Cancel
               </Button>
-              <Button type="submit" className="gradient-primary">
+              <Button type="submit" form="programme-form" className="gradient-primary">
                 {editingProgramme ? "Save changes" : "Save programme"}
               </Button>
-            </SheetFooter>
-          </form>
-        </SheetContent>
-      </Sheet>
+            </DialogFooter>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -116,13 +116,15 @@ export function TemplateDrawer({ template, open, onClose, onSuccess }: TemplateD
   }
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full overflow-y-auto sm:max-w-[520px]">
-        <SheetHeader>
-          <SheetTitle>{template ? "Edit Template" : "New Template"}</SheetTitle>
-        </SheetHeader>
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <div className="px-6 pt-6 pb-4 border-b">
+          <DialogHeader>
+            <DialogTitle>{template ? "Edit Template" : "New Template"}</DialogTitle>
+          </DialogHeader>
+        </div>
 
-        <div className="mt-6 space-y-4">
+        <div className="overflow-y-auto px-6 py-4 space-y-4">
           <div>
             <Label htmlFor="name">Template Name *</Label>
             <Input
@@ -252,7 +254,7 @@ export function TemplateDrawer({ template, open, onClose, onSuccess }: TemplateD
             </Button>
           </div>
         </div>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

@@ -45,9 +45,9 @@ export async function LeadsByProgram() {
               color: "#0A47B1",
             }}
           >
-            Leads by Program
+            Students by University
           </CardTitle>
-          <CardDescription>Distribution across training programs</CardDescription>
+          <CardDescription>Distribution across UK universities</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-5">
@@ -59,7 +59,7 @@ export async function LeadsByProgram() {
                       <div className="h-3 w-3 rounded-full shadow-sm" style={{ backgroundColor: item.color }} />
                       <span className="text-sm font-semibold text-gray-700">{item.name}</span>
                     </div>
-                    <span className="text-sm font-bold text-gray-900">{item.count} leads</span>
+                    <span className="text-sm font-bold text-gray-900">{item.count} students</span>
                   </div>
                   <div className="h-3 w-full overflow-hidden rounded-full bg-gray-100 shadow-inner">
                     <div
@@ -77,8 +77,8 @@ export async function LeadsByProgram() {
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
                   <BarChart3 className="h-8 w-8 text-gray-400" />
                 </div>
-                <p className="mt-4 text-sm font-semibold text-gray-900">No programs yet</p>
-                <p className="mt-1 text-xs text-gray-500">Create a program to start tracking leads</p>
+                <p className="mt-4 text-sm font-semibold text-gray-900">No universities yet</p>
+                <p className="mt-1 text-xs text-gray-500">Add universities to start tracking students</p>
               </div>
             )}
           </div>

@@ -16,6 +16,7 @@ interface Payment {
   method: "Stripe" | "Bank" | "Manual"
   status: "Successful" | "Pending" | "Failed"
   date: string
+  stage: string
 }
 
 const mockPayments: Payment[] = [
@@ -27,6 +28,7 @@ const mockPayments: Payment[] = [
     method: "Stripe",
     status: "Successful",
     date: "11 Nov 2025",
+    stage: "Deposit",
   },
   {
     id: "PAY-1025",
@@ -36,6 +38,7 @@ const mockPayments: Payment[] = [
     method: "Bank",
     status: "Pending",
     date: "10 Nov 2025",
+    stage: "Registration",
   },
   {
     id: "PAY-1026",
@@ -45,6 +48,7 @@ const mockPayments: Payment[] = [
     method: "Stripe",
     status: "Successful",
     date: "09 Nov 2025",
+    stage: "Mid-Term Payment",
   },
   {
     id: "PAY-1027",
@@ -54,6 +58,7 @@ const mockPayments: Payment[] = [
     method: "Manual",
     status: "Failed",
     date: "08 Nov 2025",
+    stage: "Final Payment",
   },
   {
     id: "PAY-1028",
@@ -63,6 +68,7 @@ const mockPayments: Payment[] = [
     method: "Stripe",
     status: "Successful",
     date: "07 Nov 2025",
+    stage: "Deposit",
   },
   {
     id: "PAY-1029",
@@ -72,6 +78,7 @@ const mockPayments: Payment[] = [
     method: "Bank",
     status: "Successful",
     date: "06 Nov 2025",
+    stage: "Registration",
   },
 ]
 
@@ -172,6 +179,7 @@ export function PaymentsTable() {
               <TableHead className="font-semibold text-gray-700">Payment ID</TableHead>
               <TableHead className="font-semibold text-gray-700">Player</TableHead>
               <TableHead className="font-semibold text-gray-700">Programme</TableHead>
+              <TableHead className="font-semibold text-gray-700">Stage</TableHead>
               <TableHead className="text-right font-semibold text-gray-700">Amount</TableHead>
               <TableHead className="font-semibold text-gray-700">Method</TableHead>
               <TableHead className="font-semibold text-gray-700">Status</TableHead>
@@ -182,7 +190,7 @@ export function PaymentsTable() {
           <TableBody>
             {paginatedPayments.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={8} className="h-32 text-center text-gray-500">
+                <TableCell colSpan={9} className="h-32 text-center text-gray-500">
                   No payments found
                 </TableCell>
               </TableRow>
@@ -201,6 +209,11 @@ export function PaymentsTable() {
                   <TableCell className="font-medium text-gray-900">{payment.id}</TableCell>
                   <TableCell className="text-gray-700">{payment.player}</TableCell>
                   <TableCell className="text-gray-700">{payment.programme}</TableCell>
+                  <TableCell className="text-gray-700">
+                    <Badge variant="outline" className="bg-indigo-100 text-indigo-700 hover:bg-indigo-200">
+                      {payment.stage}
+                    </Badge>
+                  </TableCell>
                   <TableCell className="text-right font-bold text-gray-900">{formatCurrency(payment.amount)}</TableCell>
                   <TableCell>{getMethodBadge(payment.method)}</TableCell>
                   <TableCell>{getStatusBadge(payment.status)}</TableCell>

@@ -3,11 +3,11 @@ import { Target } from 'lucide-react'
 
 export function ProgrammeInterest() {
   const programmes = [
-    { name: "Gap Year Programme", count: 52, color: "#3B82F6", percentage: 28 },
-    { name: "Academy Trials", count: 45, color: "#10B981", percentage: 24 },
-    { name: "Elite Training", count: 38, color: "#F59E0B", percentage: 20 },
-    { name: "Scholarship", count: 32, color: "#8B5CF6", percentage: 17 },
-    { name: "Other", count: 20, color: "#6B7280", percentage: 11 },
+    { name: "Russell Group Universities", count: 52, color: "#002147", percentage: 28 },
+    { name: "London Universities", count: 45, color: "#500778", percentage: 24 },
+    { name: "Scottish Universities", count: 38, color: "#00325F", percentage: 20 },
+    { name: "Red Brick Universities", count: 32, color: "#B01C2E", percentage: 17 },
+    { name: "Other UK Institutions", count: 20, color: "#6B7280", percentage: 11 },
   ]
 
   const total = programmes.reduce((sum, p) => sum + p.count, 0)
@@ -44,10 +44,10 @@ export function ProgrammeInterest() {
                 color: "#0A47B1",
               }}
             >
-              Programme Interest
+              University Interest
             </CardTitle>
           </div>
-          <CardDescription>Distribution of player interest across programmes</CardDescription>
+          <CardDescription>Distribution of student interest across UK universities</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center gap-6">

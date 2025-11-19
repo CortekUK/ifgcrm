@@ -8,9 +8,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { PlayerDrawer } from "./player-drawer"
 import { AddPlayerDrawer } from "./add-player-drawer"
+import { CreateGroupFromPlayersDialog } from "../player-groups/create-group-from-players-dialog"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
-import { ChevronLeft, ChevronRight, Plus, GraduationCap, Upload, Download, Send, Tag, X } from "lucide-react"
+import { ChevronLeft, ChevronRight, Plus, GraduationCap, Upload, Download, Send, Tag, X, FolderPlus } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 interface Player {
   id: number
@@ -65,12 +67,14 @@ const getTagColor = (tag: string) => {
 }
 
 export function PlayersTable() {
+  const { toast } = useToast()
   const [players, setPlayers] = useState<Player[]>([])
   const [programmes, setProgrammes] = useState<Programme[]>([])
   const [recruiters, setRecruiters] = useState<Recruiter[]>([])
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [addDrawerOpen, setAddDrawerOpen] = useState(false)
+  const [createGroupOpen, setCreateGroupOpen] = useState(false)
   const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set())
 
   const [search, setSearch] = useState("")
@@ -346,6 +350,15 @@ export function PlayersTable() {
               <div className="flex gap-2 items-center card-fade-in">
                 <span className="text-sm font-medium text-gray-700">{selectedRows.size} selected</span>
                 <Button
+                  onClick={() => setCreateGroupOpen(true)}
+                  size="sm"
+                  variant="outline"
+                  className="gap-1.5 h-9 hover:bg-indigo-50 hover:border-indigo-400 transition-colors bg-transparent rounded-lg"
+                >
+                  <FolderPlus className="h-3.5 w-3.5" />
+                  Create Group
+                </Button>
+                <Button
                   onClick={handleBulkSendMessage}
                   size="sm"
                   variant="outline"
@@ -617,6 +630,22 @@ export function PlayersTable() {
           setAddDrawerOpen(false)
         }}
       />
+
+      {selectedRows.size > 0 && (
+        <CreateGroupFromPlayersDialog
+          open={createGroupOpen}
+          onOpenChange={setCreateGroupOpen}
+          selectedPlayerIds={Array.from(selectedRows)}
+          onSuccess={() => {
+            setCreateGroupOpen(false)
+            setSelectedRows(new Set())
+            toast({
+              title: "Success",
+              description: `Group created with ${selectedRows.size} players`,
+            })
+          }}
+        />
+      )}
     </>
   )
 }

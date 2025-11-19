@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///Users/ghulam/projects/ifgcrm/app/sms-replies/page.tsx"],"sourcesContent":["import { redirect } from 'next/navigation'\n\nexport default function SmsRepliesPage() {\n  // Redirect to the new unified Replies page\n  // The SMS tab will be shown by default in the new page\n  redirect(\"/replies\")\n}\n"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEe,SAAS;IACtB,2CAA2C;IAC3C,uDAAuD;IACvD,IAAA,iMAAQ,EAAC;AACX","debugId":null}}]
+}

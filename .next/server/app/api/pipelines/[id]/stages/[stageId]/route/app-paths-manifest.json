@@ -1,0 +1,3 @@
+{
+  "/api/pipelines/[id]/stages/[stageId]/route": "app/api/pipelines/[id]/stages/[stageId]/route.js"
+}

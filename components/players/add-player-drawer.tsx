@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { X } from "lucide-react"
 
@@ -143,13 +143,13 @@ export function AddPlayerDrawer({ open, onClose, onSuccess }: AddPlayerDrawerPro
   }
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-[480px] sm:max-w-[480px] overflow-y-auto">
-        <SheetHeader>
-          <SheetTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Add New Player
-          </SheetTitle>
-        </SheetHeader>
+          </DialogTitle>
+        </DialogHeader>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-5">
           <div className="space-y-2">
@@ -334,7 +334,7 @@ export function AddPlayerDrawer({ open, onClose, onSuccess }: AddPlayerDrawerPro
             </Button>
           </div>
         </form>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

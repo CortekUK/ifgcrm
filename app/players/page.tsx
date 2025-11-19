@@ -1,8 +1,7 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { AppLayout } from "@/components/layout/app-layout"
-import { PlayersTable } from "@/components/players/players-table"
-import { PlayersSummary } from "@/components/players/players-summary"
+import { PlayersTabView } from "@/components/players/players-tab-view"
 
 export default async function PlayersPage() {
   const supabase = await createClient()
@@ -20,13 +19,11 @@ export default async function PlayersPage() {
     <AppLayout user={user} title="Players">
       <div className="gradient-primary mb-6 flex h-[72px] items-center rounded-2xl px-6 shadow-[0_2px_6px_rgba(0,0,0,0.06)]">
         <p className="text-base text-white" style={{ fontFamily: "Inter, sans-serif", fontWeight: 400 }}>
-          Manage your player database and recruitment pipeline.
+          Manage your player database, groups, and recruitment pipeline.
         </p>
       </div>
-      {/* </CHANGE> */}
 
-      <PlayersSummary />
-      <PlayersTable />
+      <PlayersTabView />
     </AppLayout>
   )
 }

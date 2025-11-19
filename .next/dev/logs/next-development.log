@@ -1,0 +1,2066 @@
+[00:00:01.071] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:01.166] Server  LOG      ✓ Ready in 851ms
+[00:00:29.768] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:29.904] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:29.904] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[00:00:29.904] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550071908}
+[00:00:40.678] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550082678}
+[00:00:41.991] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:00:42.970] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:00:44.707] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:00:45.153] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:00:59.458] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550101442}
+[00:01:13.964] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sms-replies?status=unmatched color: rgb(120, 120, 120) color: inherit {"dp":"/sms-replies","o":"http://localhost:3000/sms-replies?status=unmatched","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550115967}
+[00:01:14.448] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550116438}
+[00:01:18.628] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sms-replies?status=unmatched color: rgb(120, 120, 120) color: inherit {"dp":"/sms-replies","o":"http://localhost:3000/sms-replies?status=unmatched","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550120631}
+[00:01:19.039] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550121031}
+[00:02:29.857] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:02:29.857] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:02:31.487] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:02:31.487] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:02:38.952] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sms-replies?status=unmatched color: rgb(120, 120, 120) color: inherit {"dp":"/sms-replies","o":"http://localhost:3000/sms-replies?status=unmatched","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550200954}
+[00:02:39.707] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550201694}
+[00:03:12.195] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/players color: rgb(120, 120, 120) color: inherit {"dp":"/players","o":"http://localhost:3000/players","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550234067}
+[00:03:14.967] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:03:14.967] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:03:27.017] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550249021}
+[00:03:29.282] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:03:29.282] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:07:04.267] Server  LOG      ✓ Compiled in 110ms
+[00:07:07.260] Server  LOG      ✓ Compiled in 156ms
+[00:07:17.273] Server  LOG      ✓ Compiled in 59ms
+[00:07:17.492] Browser ERROR   ./components/replies/email-replies-content.tsx:119:1
+Parsing ecmascript source code failed
+  117 | type TimeRange = "7days" | "30days" | "all"
+  118 |
+> 119 | export function EmailRepliesContent() {
+      | ^^^^^^
+  120 |   const { toast } = useToast()
+  121 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  122 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:21.491] Browser ERROR   ./components/replies/email-replies-content.tsx:119:1
+Parsing ecmascript source code failed
+  117 | type TimeRange = "7days" | "30days" | "all"
+  118 |
+> 119 | export function EmailRepliesContent() {
+      | ^^^^^^
+  120 |   const { toast } = useToast()
+  121 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  122 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:21.972] Server  LOG      ✓ Compiled in 92ms
+[00:07:22.491] Browser ERROR   ./components/replies/email-replies-content.tsx:119:1
+Parsing ecmascript source code failed
+  117 | type TimeRange = "7days" | "30days" | "all"
+  118 |
+> 119 | export function EmailRepliesContent() {
+      | ^^^^^^
+  120 |   const { toast } = useToast()
+  121 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  122 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:22.491] Browser ERROR   ./components/replies/email-replies-content.tsx:119:1
+Parsing ecmascript source code failed
+  117 | type TimeRange = "7days" | "30days" | "all"
+  118 |
+> 119 | export function EmailRepliesContent() {
+      | ^^^^^^
+  120 |   const { toast } = useToast()
+  121 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  122 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:23.491] Browser ERROR   ./components/replies/email-replies-content.tsx:119:1
+Parsing ecmascript source code failed
+  117 | type TimeRange = "7days" | "30days" | "all"
+  118 |
+> 119 | export function EmailRepliesContent() {
+      | ^^^^^^
+  120 |   const { toast } = useToast()
+  121 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  122 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:29.490] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:36.606] Server  LOG      ✓ Compiled in 127ms
+[00:07:37.491] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:40.492] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:41.492] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:42.492] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:42.492] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:07:43.492] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:08:04.492] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:08:04.940] Server  LOG      ✓ Compiled in 201ms
+[00:08:05.491] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:08:05.491] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:08:06.491] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:08:06.491] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:08:07.491] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:08:07.853] Server  LOG      ✓ Compiled in 90ms
+[00:08:08.491] Browser ERROR   ./components/replies/email-replies-content.tsx:115:1
+Parsing ecmascript source code failed
+  113 | type TimeRange = "7days" | "30days" | "all"
+  114 |
+> 115 | export function EmailRepliesContent() {
+      | ^^^^^^
+  116 |   const { toast } = useToast()
+  117 |   const [activeTab, setActiveTab] = useState<StatusFilter>("all")
+  118 |   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
+
+'import', and 'export' cannot be used outside of module code
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:08:09.189] Server  LOG      ✓ Compiled in 64ms
+[00:08:18.175] Server  LOG      ✓ Compiled in 44ms
+[00:08:36.191] Server  LOG      ✓ Compiled in 50ms
+[00:08:40.275] Server  LOG      ✓ Compiled in 1376ms
+[00:08:41.786] Server  ERROR    ⨯ Error: Could not parse module '[project]/components/pipelines/deal-drawer-enhanced.tsx'
+
+Expected corresponding JSX closing tag for <Dialog>
+[00:08:41.808] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:08:41.808] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:08:42.105] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:42.698] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:42.698] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/pipelines","route":"/pipelines"}
+[00:08:42.698] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763550564643}
+[00:08:57.477] Browser ERROR   ./components/replies/email-replies-content.tsx:294:13
+Parsing ecmascript source code failed
+  292 |               )}
+  293 |             </button>
+> 294 |           ))}
+      |             ^
+  295 |         </div>
+  296 |       </Card>
+  297 |
+
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:09:07.491] Browser ERROR   ./components/replies/email-replies-content.tsx:294:13
+Parsing ecmascript source code failed
+  292 |               )}
+  293 |             </button>
+> 294 |           ))}
+      |             ^
+  295 |         </div>
+  296 |       </Card>
+  297 |
+
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[00:09:22.315] Server  LOG      ✓ Compiled in 59ms
+[00:11:54.770] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:11:54.771] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:12:33.036] Server  LOG      ✓ Compiled in 149ms
+[00:19:16.663] Browser ERROR   uncaughtError: Error: Could not parse module '[project]/components/dashboard/match-reply-drawer.tsx'
+
+Expected corresponding JSX closing tag for <Dialog>
+[00:20:04.538] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:20:04.622] Server  LOG      ✓ Compiled in 122ms
+[00:20:05.132] Server  ERROR   ReferenceError: document is not defined
+[00:20:05.157] Server  ERROR   ReferenceError: document is not defined
+[00:20:05.176] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[00:20:05.195] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[00:20:05.455] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:05.718] Browser ERROR   uncaughtError: Error: Could not parse module '[project]/components/dashboard/match-reply-drawer.tsx'
+
+Expected corresponding JSX closing tag for <Dialog>
+[00:20:17.252] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:20:17.298] Server  LOG      ✓ Compiled in 102ms
+[00:20:17.779] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:17.944] Browser ERROR   uncaughtError: Error: Could not parse module '[project]/components/dashboard/match-reply-drawer.tsx'
+
+Expected corresponding JSX closing tag for <Dialog>
+[00:21:20.271] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:21:20.320] Server  LOG      ✓ Compiled in 100ms
+[00:21:21.009] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:21:21.493] Browser ERROR   uncaughtError: Error: Could not parse module '[project]/components/dashboard/match-reply-drawer.tsx'
+
+Expected corresponding JSX closing tag for <Dialog>
+[00:22:50.531] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:22:50.531] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./components/dashboard/match-reply-drawer.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:22:50.532] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:22:50.669] Server  LOG      ✓ Compiled in 57ms
+[00:22:51.285] Server  ERROR   ReferenceError: document is not defined
+[00:22:51.307] Server  ERROR   ReferenceError: document is not defined
+[00:22:51.337] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[00:22:51.354] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[00:22:51.522] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:51.778] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:22:51.778] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[00:22:51.778] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551413790}
+[00:24:13.754] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sms-replies?status=unmatched color: rgb(120, 120, 120) color: inherit {"dp":"/sms-replies","o":"http://localhost:3000/sms-replies?status=unmatched","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551495764}
+[00:24:14.582] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551496578}
+[00:24:29.034] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sms-replies?status=unmatched color: rgb(120, 120, 120) color: inherit {"dp":"/sms-replies","o":"http://localhost:3000/sms-replies?status=unmatched","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551511045}
+[00:24:29.732] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551511731}
+[00:28:02.792] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/players color: rgb(120, 120, 120) color: inherit {"dp":"/players","o":"http://localhost:3000/players","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551724739}
+[00:28:04.388] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:28:04.388] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:28:04.635] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `select`.  It was passed a child from SelectItemText.
+[00:28:07.223] Server  LOG      ✓ Compiled in 70ms
+[00:28:19.131] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551741141}
+[00:28:25.356] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551747366}
+[00:28:26.375] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:28:26.807] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:28:27.024] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:28:27.342] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/players?new=true color: rgb(120, 120, 120) color: inherit {"dp":"/players","o":"http://localhost:3000/players?new=true","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551749314}
+[00:28:27.653] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:28:36.107] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551758118}
+[00:29:28.601] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/players color: rgb(120, 120, 120) color: inherit {"dp":"/players","o":"http://localhost:3000/players","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551810541}
+[00:29:30.253] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551812264}
+[00:29:54.889] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551836899}
+[00:29:55.280] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:29:55.749] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:29:55.837] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:29:56.257] Server  ERROR   [v0] Error fetching SMS replies: {}
+[00:30:56.356] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/players color: rgb(120, 120, 120) color: inherit {"dp":"/players","o":"http://localhost:3000/players","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551898305}
+[00:31:07.500] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:31:07.500] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:31:50.673] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/contacts color: rgb(120, 120, 120) color: inherit {"dp":"/contacts","o":"http://localhost:3000/contacts","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551952620}
+[00:31:51.400] Server  ERROR   [v0] Error querying leads: {}
+[00:31:51.401] Server  ERROR   [v0] Error fetching contacts: {}
+[00:31:51.506] Browser LOG     [v0] Error fetching contacts: Internal Server Error
+[00:31:51.680] Server  ERROR   [v0] Error querying leads: {}
+[00:31:51.681] Server  ERROR   [v0] Error fetching contacts: {}
+[00:31:51.786] Browser LOG     [v0] Error fetching contacts: Internal Server Error
+[00:31:57.796] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/campaigns color: rgb(120, 120, 120) color: inherit {"dp":"/campaigns","o":"http://localhost:3000/campaigns","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551959807}
+[00:32:05.907] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763551967907}
+[00:32:31.298] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:32:31.298] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:03:53.944] Server  LOG      ✓ Compiled in 166ms
+[01:04:26.888] Server  LOG      ✓ Compiled in 256ms
+[01:04:29.657] Server  LOG      ✓ Compiled in 118ms
+[01:04:31.605] Server  LOG      ✓ Compiled in 63ms
+[01:04:50.601] Server  LOG      ✓ Compiled in 59ms
+[01:05:06.075] Server  LOG      ✓ Compiled in 70ms
+[01:05:06.493] Browser ERROR   ./components/replies/email-replies-content.tsx:457:3
+Parsing ecmascript source code failed
+  455 |   )
+  456 | }
+> 457 | ```
+      |   ^
+
+Unterminated template
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[01:05:07.266] Server  LOG      ✓ Compiled in 59ms
+[01:05:07.494] Browser ERROR   ./components/replies/email-replies-content.tsx:457:3
+Parsing ecmascript source code failed
+  455 |   )
+  456 | }
+> 457 | ```
+      |   ^
+
+Unterminated template
+
+Import traces:
+  Client Component Browser:
+    ./components/replies/email-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/replies/email-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[01:05:22.794] Server  LOG      ✓ Compiled in 78ms
+[01:07:45.453] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:07:45.580] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751634"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[01:07:46.519] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:07:46.519] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:07:46.519] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554108466}
+[01:08:20.038] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:08:20.263] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751635"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[01:08:20.552] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:08:20.595] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:08:20.595] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554142478}
+[01:09:00.379] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:00.718] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751636"
+                        >
+                  ...
+
+[01:09:00.945] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:09:00.946] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:09:00.946] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554182770}
+[01:09:35.050] Server  LOG      ○ Compiling /auth/sign-up ...
+[01:09:44.346] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:44.872] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/sign-up" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751637"
+                        >
+                          ...
+                            <form onSubmit={function handleSignUp} noValidate={true} className="jsx-93c598...">
+                              <div className="jsx-93c598...">
+                                <Label>
+                                <div className="jsx-93c598...">
+                                  <User>
+                                  <Input id="fullName" type="text" placeholder="John Doe" required={true} ...>
+                                    <input
+                                      type="text"
+                                      data-slot="input"
+                                      className="file:text-foreground placeholder:text-muted-foreground selection:bg-p..."
+                                      id="fullName"
+                                      placeholder="John Doe"
+                                      required={true}
+                                      autoComplete="name"
+                                      value=""
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      aria-invalid={false}
+                                      aria-describedby={undefined}
+-                                     style={{caret-color:"transparent"}}
+                                    >
+                              <div className="jsx-93c598...">
+                                <Label>
+                                <div className="jsx-93c598...">
+                                  <Mail>
+                                  <Input id="email" type="email" placeholder="you@exampl..." required={true} ...>
+                                    <input
+                                      type="email"
+                                      data-slot="input"
+                                      className="file:text-foreground placeholder:text-muted-foreground selection:bg-p..."
+                                      id="email"
+                                      placeholder="you@example.com"
+                                      required={true}
+                                      autoComplete="email"
+                                      value=""
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      aria-invalid={false}
+                                      aria-describedby={undefined}
+-                                     style={{caret-color:"transparent"}}
+                                    >
+                              <div className="jsx-93c598...">
+                                <Label>
+                                <div className="jsx-93c598...">
+                                  <Lock>
+                                  <Input id="password" type="password" required={true} autoComplete="new-password" ...>
+                                    <input
+                                      type="password"
+                                      data-slot="input"
+                                      className="file:text-foreground placeholder:text-muted-foreground selection:bg-p..."
+                                      id="password"
+                                      required={true}
+                                      autoComplete="new-password"
+                                      value=""
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      aria-describedby="password-strength"
+-                                     style={{caret-color:"transparent"}}
+                                    >
+                                  ...
+                              <div className="jsx-93c598...">
+                                <Label>
+                                <div className="jsx-93c598...">
+                                  <Lock>
+                                  <Input id="repeat-pas..." type="password" required={true} autoComplete="new-password" ...>
+                                    <input
+                                      type="password"
+                                      data-slot="input"
+                                      className="file:text-foreground placeholder:text-muted-foreground selection:bg-p..."
+                                      id="repeat-password"
+                                      required={true}
+                                      autoComplete="new-password"
+                                      value=""
+                                      onChange={function onChange}
+                                      onBlur={function onBlur}
+                                      aria-invalid={false}
+                                      aria-describedby={undefined}
+-                                     style={{caret-color:"transparent"}}
+                                    >
+                                  ...
+                              ...
+                  ...
+
+[01:09:45.202] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:09:45.202] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/sign-up","route":"/auth/sign-up"}
+[01:09:45.202] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/sign-up color: rgb(120, 120, 120) color: inherit {"dp":"/auth/sign-up","o":"http://localhost:3000/auth/sign-up","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554226899}
+[01:10:15.454] Server  LOG      ○ Compiling /auth/verify-email ...
+[01:10:21.486] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/verify-email color: rgb(120, 120, 120) color: inherit {"dp":"/auth/verify-email","o":"http://localhost:3000/auth/verify-email","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554263309}
+[01:11:08.702] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:11:08.888] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751638"
+                        >
+                  ...
+
+[01:11:09.194] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:11:09.194] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:11:09.194] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554311124}
+[01:11:50.393] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:11:50.796] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751639"
+                        >
+                  ...
+
+[01:11:50.796] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:11:50.796] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:11:50.796] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554352680}
+[01:12:54.517] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:12:54.622] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751639"
+                        >
+                  ...
+
+[01:12:54.733] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:12:54.733] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:12:54.733] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554416665}
+[01:13:56.643] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554478496}
+[01:13:57.671] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:13:58.853] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:13:59.200] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:13:59.995] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:14:13.859] Server  ERROR   ReferenceError: document is not defined
+[01:14:14.065] Server  ERROR   ReferenceError: document is not defined
+[01:14:14.808] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[01:14:15.042] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[01:14:17.582] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:17.849] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751639"
+                        >
+                  ...
+
+[01:14:18.353] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:14:18.353] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[01:14:18.353] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554500255}
+[01:18:51.185] Server  LOG      ✓ Compiled in 179ms
+[01:18:53.287] Server  LOG      ✓ Compiled in 92ms
+[01:20:04.961] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763554846887}
+[01:22:18.715] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:22:18.715] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:22:22.890] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:22:22.890] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:22:26.587] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:22:26.587] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:22:31.005] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:22:31.005] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:23:40.206] Server  LOG      ✓ Compiled in 131ms
+[01:24:00.859] Server  LOG      ✓ Compiled in 81ms
+[01:24:19.552] Server  LOG      ✓ Compiled in 443ms
+[01:24:34.984] Server  LOG      ✓ Compiled in 140ms
+[01:25:53.935] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555195816}
+[01:26:08.402] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines?pipelineId=2&dealId=937 color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines?pipelineId=2&dealId=937","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555210328}
+[01:26:59.856] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555261741}
+[01:27:26.143] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines?pipelineId=1&dealId=859 color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines?pipelineId=1&dealId=859","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555288068}
+[01:30:08.158] Server  LOG      ✓ Compiled in 128ms
+[01:31:30.032] Server  LOG      ✓ Compiled in 167ms
+[01:32:20.560] Server  LOG      ✓ Compiled in 61ms
+[01:33:08.528] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:33:08.528] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751640"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[01:33:08.528] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:33:08.528] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:33:08.528] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555630436}
+[01:33:35.024] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555656884}
+[01:33:36.731] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:33:37.714] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:33:37.722] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:33:38.309] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:34:31.448] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555713370}
+[01:34:36.724] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555718608}
+[01:34:52.847] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines?pipelineId=2&dealId=92 color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines?pipelineId=2&dealId=92","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763555734768}
+[01:38:23.381] Server  LOG      ✓ Compiled in 193ms
+[01:38:49.705] Server  LOG      ✓ Compiled in 367ms
+[01:39:08.311] Server  LOG      ✓ Compiled in 278ms
+[01:39:30.078] Server  LOG      ✓ Compiled in 75ms
+[01:41:58.847] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763556160725}
+[01:42:09.735] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:42:09.735] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:42:34.368] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines?action=create_deal&playerId=107&playerName=Sophie+Williams&playerEmail=sophie.w%40gmail.com&playerPhone=%2B44+7700+900000 color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines?action=create_deal&playerId=107&playerName=Sophie+Williams&playerEmail=sophie.w%40gmail.com&playerPhone=%2B44+7700+900000","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763556196285}
+[01:45:03.248] Server  LOG      ✓ Compiled in 139ms
+[01:45:03.413] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [1] [1, [object Object]]
+[01:45:03.478] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [1] [1, [object Object]]
+[01:45:29.307] Server  LOG      ✓ Compiled in 192ms
+[01:45:57.179] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:45:57.323] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/auth/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751641"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[01:45:57.561] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:45:57.561] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/auth/login","route":"/auth/login"}
+[01:45:57.561] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/auth/login color: rgb(120, 120, 120) color: inherit {"dp":"/auth/login","o":"http://localhost:3000/auth/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763556399547}
+[01:52:02.729] Server  LOG      ✓ Compiled in 310ms
+[01:52:02.732] Browser ERROR   uncaughtError: ReferenceError: selectedPlayer is not defined
+[01:52:03.100] Browser ERROR   uncaughtError: ReferenceError: selectedPlayer is not defined
+[01:52:28.564] Server  LOG      ✓ Compiled in 1685ms
+[01:52:29.395] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:52:29.395] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763556790115}
+[01:52:29.400] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:52:41.966] Server  ERROR   ReferenceError: document is not defined
+[01:52:42.017] Server  ERROR   ReferenceError: document is not defined
+[01:52:42.106] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[01:52:42.145] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[01:52:43.274] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:52:44.813] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:52:44.813] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[01:52:44.813] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763556806727}
+[01:52:47.571] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:52:48.508] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:52:48.508] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[01:52:48.508] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763556810412}
+[01:53:37.040] Server  LOG      ✓ Compiled in 10s
+[01:54:08.919] Server  LOG      ✓ Compiled in 363ms
+[01:54:09.996] Server  ERROR   ReferenceError: document is not defined
+[01:54:10.024] Server  ERROR   ReferenceError: document is not defined
+[01:54:10.042] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[01:54:10.058] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[01:54:10.628] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:54:11.191] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751643"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[01:54:11.318] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:54:11.318] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[01:54:11.318] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763556893306}
+[01:54:54.101] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:54:54.101] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:57:52.280] Server  LOG      ✓ Compiled in 1852ms
+[01:58:02.005] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/payments color: rgb(120, 120, 120) color: inherit {"dp":"/payments","o":"http://localhost:3000/payments","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763557123853}
+[01:58:14.118] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763557136092}
+[01:58:15.413] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:58:16.114] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:58:16.247] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:58:17.082] Server  ERROR   [v0] Error fetching SMS replies: {}
+[01:58:23.205] Server  ERROR   ReferenceError: document is not defined
+[01:58:23.225] Server  ERROR   ReferenceError: document is not defined
+[01:58:23.244] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[01:58:23.261] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[01:58:23.715] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:58:24.296] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751644"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[01:58:24.432] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:58:24.432] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[01:58:24.432] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763557146419}
+[01:58:33.436] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/pipelines color: rgb(120, 120, 120) color: inherit {"dp":"/pipelines","o":"http://localhost:3000/pipelines","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763557155420}
+[01:58:38.990] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763557160908}
+[01:58:50.276] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:58:50.276] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:02:08.033] Server  LOG      ✓ Compiled in 1696ms
+[02:02:08.166] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:315:3
+Parsing ecmascript source code failed
+  313 |   )
+  314 | }
+> 315 | ```
+      |   ^
+> 316 | 
+      | ^
+
+Unterminated template
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:02:08.168] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:315:3
+Parsing ecmascript source code failed
+  313 |   )
+  314 | }
+> 315 | ```
+      |   ^
+> 316 | 
+      | ^
+
+Unterminated template
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:02:08.168] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:315:3
+Parsing ecmascript source code failed
+  313 |   )
+  314 | }
+> 315 | ```
+      |   ^
+> 316 | 
+      | ^
+
+Unterminated template
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:02:08.512] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:315:3
+Parsing ecmascript source code failed
+  313 |   )
+  314 | }
+> 315 | ```
+      |   ^
+> 316 | 
+      | ^
+
+Unterminated template
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:02:26.713] Server  LOG      ✓ Compiled in 263ms
+[02:02:52.615] Server  ERROR   ReferenceError: document is not defined
+[02:02:52.636] Server  ERROR   ReferenceError: document is not defined
+[02:02:52.654] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[02:02:52.671] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[02:02:53.084] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:02:53.660] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751645"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[02:02:53.792] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:02:53.792] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[02:02:53.792] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763557415858}
+[02:03:03.193] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:03:03.194] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:06:22.197] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:06:22.197] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:10:37.605] Server  LOG      ✓ Compiled in 984ms
+[02:11:41.496] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:11:41.496] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:12:40.284] Server  LOG      ✓ Compiled in 300ms
+[02:12:56.336] Server  LOG      ✓ Compiled in 112ms
+[02:12:56.339] Browser ERROR   uncaughtError: ReferenceError: suggestedPlayers is not defined
+[02:12:56.343] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[02:12:56.343] Browser ERROR   uncaughtError: ReferenceError: suggestedPlayers is not defined
+[02:12:56.343] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[02:12:56.343] Browser ERROR   uncaughtError: ReferenceError: suggestedPlayers is not defined
+[02:12:56.343] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[02:12:56.722] Browser ERROR   uncaughtError: ReferenceError: suggestedPlayers is not defined
+[02:12:57.512] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558018897}
+[02:12:57.520] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558018976}
+[02:12:59.057] Server  ERROR    ⨯ ReferenceError: suggestedPlayers is not defined
+[02:12:59.117] Server  ERROR   ReferenceError: document is not defined
+[02:12:59.147] Server  ERROR   ReferenceError: document is not defined
+[02:12:59.165] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[02:12:59.181] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[02:12:59.821] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:13:01.044] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:13:03.182] Browser ERROR   uncaughtError: ReferenceError: suggestedPlayers is not defined
+[02:13:03.229] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:13:04.803] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751644"
+                        >
+                  ...
+
+[02:13:05.789] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:13:05.789] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[02:13:05.789] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558027852}
+[02:13:06.567] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751645"
+                        >
+                  ...
+
+[02:13:06.707] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:13:06.708] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[02:13:06.708] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558028777}
+[02:13:09.021] Server  LOG      ✓ Compiled in 794ms
+[02:13:09.157] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[02:13:14.890] Server  ERROR   ReferenceError: document is not defined
+[02:13:14.911] Server  ERROR   ReferenceError: document is not defined
+[02:13:14.933] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[02:13:14.955] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[02:13:16.188] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:13:17.080] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/dashboard" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751643"
+                        >
+                  ...
+
+[02:13:17.527] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:13:17.527] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[02:13:17.527] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558039592}
+[02:13:19.497] Server  ERROR   [v0] Error fetching SMS replies: {}
+[02:13:20.344] Server  ERROR   [v0] Error fetching SMS replies: {}
+[02:13:35.024] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:13:35.024] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:18:56.856] Server  LOG      ✓ Compiled in 115ms
+[02:18:57.156] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:18:57.218] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:18:57.219] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:18:57.222] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:18:57.526] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Client Component Browser]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Client Component SSR]
+    ./components/dashboard/unmatched-replies.tsx [Server Component]
+    ./app/dashboard/page.tsx [Server Component]
+[02:19:25.982] Server  LOG      ✓ Compiled in 198ms
+[02:19:26.332] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/sms-replies/sms-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/sms-replies/sms-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[02:19:26.658] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/sms-replies/sms-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/sms-replies/sms-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[02:19:26.679] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/sms-replies/sms-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/sms-replies/sms-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[02:19:26.682] Browser ERROR   ./components/dashboard/match-reply-drawer.tsx:328:4
+Parsing ecmascript source code failed
+  326 |       </DialogContent>
+  327 |     </Dialog>
+> 328 |   )
+      |    ^
+  329 |
+  330 |
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component Browser]
+    ./components/sms-replies/sms-replies-content.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Client Component Browser]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/dashboard/match-reply-drawer.tsx [Client Component SSR]
+    ./components/sms-replies/sms-replies-content.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Client Component SSR]
+    ./components/replies/replies-tab-view.tsx [Server Component]
+    ./app/replies/page.tsx [Server Component]
+[02:19:27.089] Server  LOG      ✓ Compiled in 0ms
+[02:19:27.135] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:19:27.135] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:20:10.215] Server  ERROR   ReferenceError: document is not defined
+[02:20:10.270] Server  ERROR   ReferenceError: document is not defined
+[02:20:10.288] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[02:20:10.308] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[02:20:11.265] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:20:12.683] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751645"
+                        >
+                  ...
+
+[02:20:12.875] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:20:12.875] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[02:20:12.875] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies?tab=sms color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies?tab=sms","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558454894}
+[02:20:50.920] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/players color: rgb(120, 120, 120) color: inherit {"dp":"/players","o":"http://localhost:3000/players","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558492353}
+[02:21:02.491] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558504440}
+[02:21:05.849] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:21:05.849] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[02:24:02.030] Server  LOG      ✓ Compiled in 1234ms
+[02:25:01.817] Server  LOG      ✓ Compiled in 23ms
+[02:25:02.583] Server  ERROR   ReferenceError: document is not defined
+[02:25:02.602] Server  ERROR   ReferenceError: document is not defined
+[02:25:02.641] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[02:25:02.658] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[02:25:02.924] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:25:03.451] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751645"
+                        >
+                  ...
+
+[02:25:03.577] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:25:03.577] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[02:25:03.577] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558745603}
+[02:26:19.881] Server  LOG      ✓ Compiled in 179ms
+[02:26:45.522] Server  LOG      ✓ Compiled in 25ms
+[02:26:46.795] Server  ERROR   ReferenceError: document is not defined
+[02:26:46.816] Server  ERROR   ReferenceError: document is not defined
+[02:26:46.843] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[02:26:46.860] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[02:26:47.341] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:26:48.098] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751646"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[02:26:48.284] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:26:48.284] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[02:26:48.284] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763558850270}
+[02:34:19.454] Server  LOG      ✓ Compiled in 125ms
+[02:34:48.142] Server  ERROR   ReferenceError: document is not defined
+[02:34:48.161] Server  ERROR   ReferenceError: document is not defined
+[02:34:48.179] Server  ERROR    ⨯ "unhandledRejection:" ReferenceError: document is not defined
+[02:34:48.195] Server  ERROR    ⨯ "unhandledRejection: " ReferenceError: document is not defined
+[02:34:50.003] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:34:52.006] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/replies" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         data-jetski-tab-id="156751647"
+                        >
+                          <body
++                           className="font-sans antialiased"
+-                           className="font-sans antialiased antigravity-scroll-lock"
+                          >
+                  ...
+
+[02:34:52.673] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:34:52.673] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/replies","route":"/replies"}
+[02:34:52.673] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/replies color: rgb(120, 120, 120) color: inherit {"dp":"/replies","o":"http://localhost:3000/replies","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1763559334494}
+[02:43:59.279] Server  LOG      ✓ Compiled in 583ms
+[02:44:15.582] Server  LOG      ✓ Compiled in 235ms
+[02:44:16.465] Server  ERROR   Error: write EPIPE
+[02:44:16.803] Server  ERROR    ⨯ "uncaughtException:" Error: write EPIPE
+[02:44:16.990] Server  ERROR    ⨯ "uncaughtException: " Error: write EPIPE

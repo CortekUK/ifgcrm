@@ -1,0 +1,16 @@
+{
+  "status": 307,
+  "headers": {
+    "location": "/replies",
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/sms-replies/layout,_N_T_/sms-replies/page,_N_T_/sms-replies"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/sms-replies/__PAGE__",
+    "/sms-replies",
+    "/_index"
+  ]
+}

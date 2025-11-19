@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -21,6 +21,12 @@ import {
   Edit,
   X,
   DollarSign,
+  Download,
+  CreditCard,
+  FileText,
+  CheckCircle2,
+  AlertCircle,
+  Activity,
 } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/hooks/use-toast"
@@ -249,16 +255,16 @@ export function DealDrawerEnhanced({
   const currentStageName = stages.find((s) => s.id === currentStageId)?.name || deal.stage_name || "Unknown Stage"
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:w-[440px] sm:max-w-[440px] overflow-y-auto bg-gray-50 shadow-[-4px_0_12px_rgba(0,0,0,0.08)] transition-all duration-250 ease-in-out">
-        <SheetHeader className="border-b pb-4 bg-white -mx-6 -mt-6 px-6 pt-6 mb-6">
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader className="border-b pb-4 bg-white -mx-6 -mt-6 px-6 pt-6 mb-6">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-md">
               {getInitials(deal.player_name)}
             </div>
 
             <div className="flex-1 min-w-0">
-              <SheetTitle className="text-xl font-semibold text-gray-900 mb-2">{deal.player_name}</SheetTitle>
+              <DialogTitle className="text-xl font-semibold text-gray-900 mb-2">{deal.player_name}</DialogTitle>
               <div className="flex items-center gap-2 mb-2">
                 <Badge className="bg-blue-100 text-blue-700 border-blue-200 border font-medium transition-all duration-200">
                   {currentStageName}
@@ -267,7 +273,7 @@ export function DealDrawerEnhanced({
               <p className="text-sm text-gray-500">Recruiter: {deal.recruiter}</p>
             </div>
           </div>
-        </SheetHeader>
+        </DialogHeader>
 
         <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-3 bg-white shadow-sm">
@@ -503,15 +509,350 @@ export function DealDrawerEnhanced({
             )}
           </TabsContent>
 
-          <TabsContent value="invoices" className="animate-fade-in">
-            <p className="text-sm text-gray-500">Invoices tab content coming soon...</p>
+          <TabsContent value="invoices" className="animate-fade-in space-y-4">
+            {/* Invoice List */}
+            <div className="space-y-3">
+              {/* Invoice 1 - Paid */}
+              <div className="border rounded-lg p-4 hover:border-blue-500 transition-colors">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start gap-3">
+                    <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                      <FileText className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-semibold">Invoice #INV-2024-001</h4>
+                        <Badge className="bg-green-100 text-green-700 hover:bg-green-100">
+                          <CheckCircle2 className="h-3 w-3 mr-1" />
+                          Paid
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Registration Fee - {deal?.programme || "Program"}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Issued: Jan 15, 2024 • Due: Jan 30, 2024
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-lg">£{deal?.deal_value || "18,000"}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1"
+                    onClick={() => {
+                      toast({
+                        title: "Downloading Invoice",
+                        description: "Invoice #INV-2024-001 is being downloaded...",
+                      })
+                    }}
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download PDF
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled
+                    className="opacity-50"
+                  >
+                    <CreditCard className="h-4 w-4 mr-2" />
+                    Paid
+                  </Button>
+                </div>
+              </div>
+
+              {/* Invoice 2 - Pending */}
+              <div className="border rounded-lg p-4 hover:border-blue-500 transition-colors">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start gap-3">
+                    <div className="h-10 w-10 rounded-lg bg-amber-50 flex items-center justify-center">
+                      <FileText className="h-5 w-5 text-amber-600" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-semibold">Invoice #INV-2024-002</h4>
+                        <Badge className="bg-amber-100 text-amber-700 hover:bg-amber-100">
+                          <AlertCircle className="h-3 w-3 mr-1" />
+                          Pending
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Program Deposit - {deal?.programme || "Program"}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Issued: Feb 01, 2024 • Due: Feb 15, 2024
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-lg">£5,000</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1"
+                    onClick={() => {
+                      toast({
+                        title: "Downloading Invoice",
+                        description: "Invoice #INV-2024-002 is being downloaded...",
+                      })
+                    }}
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download PDF
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-blue-600 hover:bg-blue-700"
+                    onClick={() => {
+                      // Mock Stripe payment link
+                      toast({
+                        title: "Opening Payment Portal",
+                        description: "Redirecting to Stripe payment page...",
+                      })
+                      // In production: window.open('https://buy.stripe.com/test_mock_link', '_blank')
+                    }}
+                  >
+                    <CreditCard className="h-4 w-4 mr-2" />
+                    Pay Now
+                  </Button>
+                </div>
+              </div>
+
+              {/* Invoice 3 - Overdue */}
+              <div className="border border-red-200 rounded-lg p-4 hover:border-red-400 transition-colors bg-red-50/30">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start gap-3">
+                    <div className="h-10 w-10 rounded-lg bg-red-100 flex items-center justify-center">
+                      <FileText className="h-5 w-5 text-red-600" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-semibold">Invoice #INV-2024-003</h4>
+                        <Badge className="bg-red-100 text-red-700 hover:bg-red-100">
+                          <AlertCircle className="h-3 w-3 mr-1" />
+                          Overdue
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Monthly Fee - {deal?.programme || "Program"}
+                      </p>
+                      <p className="text-xs text-red-600 mt-1 font-medium">
+                        Issued: Dec 01, 2023 • Due: Dec 15, 2023
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-lg text-red-600">£2,500</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1"
+                    onClick={() => {
+                      toast({
+                        title: "Downloading Invoice",
+                        description: "Invoice #INV-2024-003 is being downloaded...",
+                      })
+                    }}
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download PDF
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-red-600 hover:bg-red-700"
+                    onClick={() => {
+                      toast({
+                        title: "Opening Payment Portal",
+                        description: "Redirecting to Stripe payment page...",
+                      })
+                    }}
+                  >
+                    <CreditCard className="h-4 w-4 mr-2" />
+                    Pay Now
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Summary */}
+            <div className="border-t pt-4 mt-4">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-muted-foreground">Total Invoiced</span>
+                <span className="font-semibold">£{(parseFloat(deal?.deal_value?.toString() || "18000") + 7500).toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-muted-foreground">Total Paid</span>
+                <span className="font-semibold text-green-600">£{deal?.deal_value || "18,000"}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Outstanding</span>
+                <span className="font-semibold text-red-600">£7,500</span>
+              </div>
+            </div>
           </TabsContent>
 
           <TabsContent value="activity" className="animate-fade-in">
-            <p className="text-sm text-gray-500">Activity tab content coming soon...</p>
+            <div className="space-y-4">
+              {/* Activity Timeline */}
+              <div className="relative space-y-4">
+                {/* Activity 1 - Stage Change */}
+                <div className="flex gap-3">
+                  <div className="flex flex-col items-center">
+                    <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                      <Activity className="h-4 w-4 text-blue-600" />
+                    </div>
+                    <div className="w-px flex-1 bg-gray-200 mt-2"></div>
+                  </div>
+                  <div className="flex-1 pb-4">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-medium">Stage updated</p>
+                        <p className="text-sm text-muted-foreground">
+                          Moved to <span className="font-semibold">{deal?.stage_name || "Zoom Scheduled"}</span>
+                        </p>
+                      </div>
+                      <span className="text-xs text-muted-foreground">2 hours ago</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      by {deal?.recruiter || "Sarah"}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Activity 2 - Email Sent */}
+                <div className="flex gap-3">
+                  <div className="flex flex-col items-center">
+                    <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
+                      <Mail className="h-4 w-4 text-green-600" />
+                    </div>
+                    <div className="w-px flex-1 bg-gray-200 mt-2"></div>
+                  </div>
+                  <div className="flex-1 pb-4">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-medium">Email sent</p>
+                        <p className="text-sm text-muted-foreground">
+                          Follow-up email sent to player
+                        </p>
+                      </div>
+                      <span className="text-xs text-muted-foreground">5 hours ago</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      by {deal?.recruiter || "Sarah"}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Activity 3 - Note Added */}
+                <div className="flex gap-3">
+                  <div className="flex flex-col items-center">
+                    <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
+                      <FileText className="h-4 w-4 text-purple-600" />
+                    </div>
+                    <div className="w-px flex-1 bg-gray-200 mt-2"></div>
+                  </div>
+                  <div className="flex-1 pb-4">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-medium">Note added</p>
+                        <p className="text-sm text-muted-foreground">
+                          {deal?.notes || "Player expressed strong interest in the program. Follow-up scheduled for next week."}
+                        </p>
+                      </div>
+                      <span className="text-xs text-muted-foreground">1 day ago</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      by {deal?.recruiter || "Sarah"}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Activity 4 - Phone Call */}
+                <div className="flex gap-3">
+                  <div className="flex flex-col items-center">
+                    <div className="h-8 w-8 rounded-full bg-amber-100 flex items-center justify-center">
+                      <Phone className="h-4 w-4 text-amber-600" />
+                    </div>
+                    <div className="w-px flex-1 bg-gray-200 mt-2"></div>
+                  </div>
+                  <div className="flex-1 pb-4">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-medium">Phone call</p>
+                        <p className="text-sm text-muted-foreground">
+                          Outbound call - 15 minutes
+                        </p>
+                      </div>
+                      <span className="text-xs text-muted-foreground">2 days ago</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      by {deal?.recruiter || "Sarah"}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Activity 5 - Invoice Paid */}
+                <div className="flex gap-3">
+                  <div className="flex flex-col items-center">
+                    <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
+                      <CheckCircle2 className="h-4 w-4 text-green-600" />
+                    </div>
+                    <div className="w-px flex-1 bg-gray-200 mt-2"></div>
+                  </div>
+                  <div className="flex-1 pb-4">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-medium">Payment received</p>
+                        <p className="text-sm text-muted-foreground">
+                          Invoice #INV-2024-001 paid - £{deal?.deal_value || "18,000"}
+                        </p>
+                      </div>
+                      <span className="text-xs text-muted-foreground">3 days ago</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      via Stripe
+                    </p>
+                  </div>
+                </div>
+
+                {/* Activity 6 - Deal Created */}
+                <div className="flex gap-3">
+                  <div className="flex flex-col items-center">
+                    <div className="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center">
+                      <UserCircle2 className="h-4 w-4 text-gray-600" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <p className="font-medium">Deal created</p>
+                        <p className="text-sm text-muted-foreground">
+                          Player added to pipeline
+                        </p>
+                      </div>
+                      <span className="text-xs text-muted-foreground">1 week ago</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      by {deal?.recruiter || "Sarah"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

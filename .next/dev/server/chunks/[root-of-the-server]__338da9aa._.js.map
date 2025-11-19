@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///Users/ghulam/projects/ifgcrm/app/api/campaigns/summary/route.ts"],"sourcesContent":["import { NextResponse } from \"next/server\"\n\nexport async function GET() {\n  // Mock data - replace with real database queries\n  const summary = {\n    total_campaigns: 24,\n    emails_sent: 1847,\n    sms_sent: 623,\n    avg_response_rate: 38.5,\n  }\n\n  return NextResponse.json(summary)\n}\n"],"names":[],"mappings":";;;;AAAA;;AAEO,eAAe;IACpB,iDAAiD;IACjD,MAAM,UAAU;QACd,iBAAiB;QACjB,aAAa;QACb,UAAU;QACV,mBAAmB;IACrB;IAEA,OAAO,gJAAY,CAAC,IAAI,CAAC;AAC3B","debugId":null}}]
+}

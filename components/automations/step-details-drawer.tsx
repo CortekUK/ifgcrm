@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -218,9 +218,9 @@ export function StepDetailsDrawer({ workflowId, step, open, onClose, onStepUpdat
   }
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:w-[500px] sm:max-w-[500px] overflow-y-auto p-6">
-        <SheetHeader className="border-b pb-5 mb-6">
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader className="border-b pb-5 mb-6">
           <div className="flex items-start gap-3">
             <div
               className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
@@ -242,7 +242,7 @@ export function StepDetailsDrawer({ workflowId, step, open, onClose, onStepUpdat
               />
             </div>
             <div className="flex-1 min-w-0">
-              <SheetTitle className="text-lg font-bold text-gray-900">{step.title}</SheetTitle>
+              <DialogTitle className="text-lg font-bold text-gray-900">{step.title}</DialogTitle>
               <p className="text-sm text-gray-600 mt-1">
                 {step.type === "email"
                   ? "Sends when this step is reached in the workflow."
@@ -252,7 +252,7 @@ export function StepDetailsDrawer({ workflowId, step, open, onClose, onStepUpdat
               </p>
             </div>
           </div>
-        </SheetHeader>
+        </DialogHeader>
 
         {error && (
           <div className="mb-4 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
@@ -432,7 +432,7 @@ export function StepDetailsDrawer({ workflowId, step, open, onClose, onStepUpdat
             </Button>
           </div>
         )}
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

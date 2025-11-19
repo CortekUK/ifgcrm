@@ -3,12 +3,11 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { ProgrammesPanel } from "./programmes-panel"
-import { PipelinesPanel } from "./pipelines-panel"
 import { EmailSendersPanel } from "./email-senders-panel"
 import { UsersPanel } from "./users-panel"
-import { GraduationCap, Puzzle, Mail, Users } from "lucide-react"
+import { GraduationCap, Mail, Users } from "lucide-react"
 
-type SettingsTab = "programmes" | "pipelines" | "senders" | "users"
+type SettingsTab = "programmes" | "senders" | "users"
 
 export function SettingsContent() {
   const searchParams = useSearchParams()
@@ -17,14 +16,13 @@ export function SettingsContent() {
 
   useEffect(() => {
     const tabParam = searchParams.get("tab") as SettingsTab
-    if (tabParam && ["programmes", "pipelines", "senders", "users"].includes(tabParam)) {
+    if (tabParam && ["programmes", "senders", "users"].includes(tabParam)) {
       setActiveTab(tabParam)
     }
   }, [searchParams])
 
   const tabs = [
     { id: "programmes" as const, label: "Programmes", icon: GraduationCap },
-    { id: "pipelines" as const, label: "Pipelines", icon: Puzzle },
     { id: "senders" as const, label: "Email senders", icon: Mail },
     { id: "users" as const, label: "Users & roles", icon: Users },
   ]
@@ -50,7 +48,6 @@ export function SettingsContent() {
 
       <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
         {activeTab === "programmes" && <ProgrammesPanel />}
-        {activeTab === "pipelines" && <PipelinesPanel />}
         {activeTab === "senders" && <EmailSendersPanel />}
         {activeTab === "users" && <UsersPanel />}
       </div>

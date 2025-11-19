@@ -1,26 +1,30 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect, Suspense } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { AppLayout } from "@/components/layout/app-layout"
 import { PipelinesBoard } from "@/components/pipelines/pipelines-board"
+import { DealStatistics } from "@/components/pipelines/deal-statistics"
 import { Button } from "@/components/ui/button"
 import { Plus, ListTree } from "lucide-react"
 import { CreateDealModal } from "@/components/pipelines/create-deal-modal"
 import { AddStageModal } from "@/components/pipelines/add-stage-modal"
 import { createClient } from "@/lib/supabase/client"
 
-export default function PipelinesPage() {
+function PipelinesContent() {
   const [user, setUser] = useState<any>(null)
   const [userRole, setUserRole] = useState<string | null>(null)
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [isAddStageModalOpen, setIsAddStageModalOpen] = useState(false)
+  const [selectedPipelineId, setSelectedPipelineId] = useState<string>("1")
+  const [preSelectedPlayer, setPreSelectedPlayer] = useState<{ id: string; name: string; email?: string; phone?: string } | null>(null)
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     const supabase = createClient()
 
-    supabase.auth.getUser().then(({ data: { user }, error }) => {
+    supabase.auth.getUser().then(({ data: { user }, error }: { data: { user: any }, error: any }) => {
       if (error || !user) {
         router.push("/auth/login")
       } else {
@@ -31,7 +35,7 @@ export default function PipelinesPage() {
           .select("role")
           .eq("id", user.id)
           .single()
-          .then(({ data: profile }) => {
+          .then(({ data: profile }: { data: any }) => {
             if (profile) {
               setUserRole(profile.role)
             }
@@ -39,6 +43,26 @@ export default function PipelinesPage() {
       }
     })
   }, [router])
+
+  useEffect(() => {
+    const action = searchParams.get("action")
+    if (action === "create_deal") {
+      const playerId = searchParams.get("playerId")
+      const playerName = searchParams.get("playerName")
+      const playerEmail = searchParams.get("playerEmail")
+      const playerPhone = searchParams.get("playerPhone")
+
+      if (playerId && playerName) {
+        setPreSelectedPlayer({
+          id: playerId,
+          name: playerName,
+          email: playerEmail || undefined,
+          phone: playerPhone || undefined
+        })
+        setIsCreateModalOpen(true)
+      }
+    }
+  }, [searchParams])
 
   if (!user) {
     return null
@@ -57,7 +81,10 @@ export default function PipelinesPage() {
               </p>
               <div className="flex items-center gap-2">
                 <Button
-                  onClick={() => setIsCreateModalOpen(true)}
+                  onClick={() => {
+                    setPreSelectedPlayer(null)
+                    setIsCreateModalOpen(true)
+                  }}
                   className="gap-2 bg-white text-primary shadow-md hover:bg-muted transition-all duration-200 hover:shadow-lg active:scale-95"
                 >
                   <Plus className="h-4 w-4" />
@@ -75,6 +102,9 @@ export default function PipelinesPage() {
               </div>
             </div>
           </div>
+
+          {/* Deal Statistics */}
+          <DealStatistics pipelineId={selectedPipelineId} />
         </div>
 
         <div className="flex-1 min-h-0 overflow-hidden">
@@ -82,8 +112,30 @@ export default function PipelinesPage() {
         </div>
       </div>
 
-      <CreateDealModal open={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
+      <CreateDealModal
+        open={isCreateModalOpen}
+        onClose={() => {
+          setIsCreateModalOpen(false)
+          setPreSelectedPlayer(null)
+          // Clear URL params
+          router.replace("/pipelines")
+        }}
+        preSelectedPlayer={preSelectedPlayer}
+        onDealCreated={(deal) => {
+          // Dispatch event for PipelinesBoard to update
+          const event = new CustomEvent('dealCreated', { detail: deal })
+          window.dispatchEvent(event)
+        }}
+      />
       {canAddStage && <AddStageModal open={isAddStageModalOpen} onClose={() => setIsAddStageModalOpen(false)} />}
     </AppLayout>
+  )
+}
+
+export default function PipelinesPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+      <PipelinesContent />
+    </Suspense>
   )
 }

@@ -1,14 +1,17 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { useRouter } from 'next/navigation'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Badge } from "@/components/ui/badge"
 import { useToast } from "@/hooks/use-toast"
-import { Search, Check, AlertTriangle, Phone, MessageSquare, Clock } from 'lucide-react'
+import { Search, Check, AlertTriangle, Phone, MessageSquare, Clock, ArrowRight } from 'lucide-react'
+
+import { MatchedPlayerDialog } from "@/components/replies/matched-player-dialog"
 
 const demoReplies = [
   {
@@ -57,13 +60,15 @@ interface MatchReplyDrawerProps {
 }
 
 export function MatchReplyDrawer({ replyId, open, onClose, onSuccess }: MatchReplyDrawerProps) {
+  const router = useRouter()
   const [reply, setReply] = useState<typeof demoReplies[0] | null>(null)
-  const [suggestedPlayers, setSuggestedPlayers] = useState<typeof demoPlayers>([])
   const [searchResults, setSearchResults] = useState<typeof demoPlayers>([])
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [viewingPlayer, setViewingPlayer] = useState<typeof demoPlayers[0] | null>(null)
+  const [showPlayerDialog, setShowPlayerDialog] = useState(false)
   const { toast } = useToast()
 
   useEffect(() => {
@@ -72,7 +77,6 @@ export function MatchReplyDrawer({ replyId, open, onClose, onSuccess }: MatchRep
     } else {
       // Reset state when drawer closes
       setReply(null)
-      setSuggestedPlayers([])
       setSearchResults([])
       setSearchQuery("")
       setSelectedPlayerId(null)
@@ -81,39 +85,13 @@ export function MatchReplyDrawer({ replyId, open, onClose, onSuccess }: MatchRep
 
   const fetchReplyDetails = async () => {
     if (!replyId) return
-    
+
     setLoading(true)
     try {
       // Find the reply in demo data
       const foundReply = demoReplies.find(r => r.id === replyId)
       if (foundReply) {
         setReply(foundReply)
-        
-        // Find suggested matches
-        const suggestions: typeof demoPlayers = []
-        const normalizedPhone = foundReply.fromNumber.replace(/\D/g, '')
-        const lastFourDigits = normalizedPhone.slice(-4)
-        
-        // 1. Exact phone match
-        const exactMatch = demoPlayers.find(p => 
-          p.phone.replace(/\D/g, '') === normalizedPhone
-        )
-        if (exactMatch) suggestions.push(exactMatch)
-        
-        // 2. Partial phone match (last 4 digits)
-        const partialMatches = demoPlayers.filter(p => {
-          const playerPhone = p.phone.replace(/\D/g, '')
-          return playerPhone.slice(-4) === lastFourDigits && !suggestions.find(s => s.id === p.id)
-        })
-        suggestions.push(...partialMatches.slice(0, 2))
-        
-        // 3. Players from same programme (simulated - using "US College 2026" as recent campaign target)
-        const sameProgramme = demoPlayers.filter(p => 
-          p.programme === 'US College 2026' && !suggestions.find(s => s.id === p.id)
-        )
-        suggestions.push(...sameProgramme.slice(0, 2))
-        
-        setSuggestedPlayers(suggestions.slice(0, 5))
       }
     } catch (error) {
       console.error("[v0] Error fetching reply details:", error)
@@ -130,13 +108,34 @@ export function MatchReplyDrawer({ replyId, open, onClose, onSuccess }: MatchRep
     }
 
     const normalizedQuery = query.toLowerCase()
-    const results = demoPlayers.filter(player => 
+    const results = demoPlayers.filter(player =>
       player.name.toLowerCase().includes(normalizedQuery) ||
       player.email.toLowerCase().includes(normalizedQuery) ||
       player.phone.includes(query) ||
       player.id.includes(query)
     )
     setSearchResults(results)
+  }
+
+  const handleViewPlayer = (e: React.MouseEvent, player: typeof demoPlayers[0]) => {
+    e.stopPropagation()
+    setViewingPlayer(player)
+    setShowPlayerDialog(true)
+  }
+
+  const handleCreateDealFromDialog = () => {
+    if (viewingPlayer) {
+      const params = new URLSearchParams({
+        action: 'create_deal',
+        playerId: viewingPlayer.id,
+        playerName: viewingPlayer.name,
+        playerEmail: viewingPlayer.email,
+        playerPhone: viewingPlayer.phone
+      })
+      router.push(`/pipelines?${params.toString()}`)
+      setShowPlayerDialog(false)
+      onClose()
+    }
   }
 
   const handleLinkToPlayer = async () => {
@@ -146,12 +145,12 @@ export function MatchReplyDrawer({ replyId, open, onClose, onSuccess }: MatchRep
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 500))
-      
+
       toast({
         title: "Reply matched",
         description: "SMS reply has been linked to the player.",
       })
-      
+
       onSuccess()
       onClose()
     } catch (error) {
@@ -171,12 +170,12 @@ export function MatchReplyDrawer({ replyId, open, onClose, onSuccess }: MatchRep
     setSubmitting(true)
     try {
       await new Promise(resolve => setTimeout(resolve, 300))
-      
+
       toast({
         title: "Marked as spam",
         description: "SMS reply has been marked as spam.",
       })
-      
+
       onSuccess()
       onClose()
     } catch (error) {
@@ -190,160 +189,185 @@ export function MatchReplyDrawer({ replyId, open, onClose, onSuccess }: MatchRep
     }
   }
 
-  const selectedPlayer = [...suggestedPlayers, ...searchResults].find(p => p.id === selectedPlayerId)
+  const handleCreateDeal = () => {
+    if (!selectedPlayerId) return
+
+    const player = demoPlayers.find(p => p.id === selectedPlayerId)
+    if (player) {
+      const params = new URLSearchParams({
+        action: 'create_deal',
+        playerId: player.id,
+        playerName: player.name,
+        playerEmail: player.email,
+        playerPhone: player.phone
+      })
+      router.push(`/pipelines?${params.toString()}`)
+      onClose()
+    }
+  }
+
+  const selectedPlayer = searchResults.find(p => p.id === selectedPlayerId)
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:w-[600px] sm:max-w-[600px] overflow-y-auto">
-        <SheetHeader className="border-b pb-4 mb-6">
-          <SheetTitle className="text-2xl font-bold text-gray-900">Match SMS Reply</SheetTitle>
-        </SheetHeader>
+    <>
+      <Dialog open={open} onOpenChange={onClose}>
+        <DialogContent className="sm:max-w-[600px] p-0 gap-0 overflow-hidden bg-white">
+          <DialogHeader className="p-6 pb-2">
+            <div className="flex items-center justify-between">
+              <DialogTitle className="text-xl font-semibold text-gray-900">Match SMS Reply</DialogTitle>
+            </div>
+            <p className="text-sm text-gray-500 mt-1">Link this message to an existing player profile</p>
+          </DialogHeader>
 
-        {loading ? (
-          <div className="space-y-4">
-            <Skeleton className="h-32 w-full bg-gray-200" />
-            <Skeleton className="h-48 w-full bg-gray-200" />
-          </div>
-        ) : reply ? (
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Phone className="h-4 w-4" />
-                <span className="font-medium">{reply.fromNumber}</span>
-              </div>
-              
-              <div className="rounded-lg border-2 border-gray-200 bg-gray-50 p-4">
-                <div className="flex items-start gap-3">
-                  <MessageSquare className="h-5 w-5 text-gray-400 mt-0.5" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-900 whitespace-pre-wrap break-words">
+          {loading ? (
+            <div className="p-6 space-y-6">
+              <Skeleton className="h-32 w-full bg-gray-100 rounded-xl" />
+              <Skeleton className="h-64 w-full bg-gray-100 rounded-xl" />
+            </div>
+          ) : reply ? (
+            <div className="flex-1 overflow-y-auto max-h-[60vh]">
+              <div className="p-6 pt-4 space-y-6">
+                {/* Message Details */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 border border-blue-100">
+                      <Phone className="h-3.5 w-3.5" />
+                      <span className="text-xs font-medium">{reply.fromNumber}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                      <Clock className="h-3.5 w-3.5" />
+                      <span>{reply.receivedAt}</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 relative">
+                    <div className="absolute -left-1.5 top-4 w-3 h-3 bg-gray-50 border-l border-t border-gray-100 transform -rotate-45"></div>
+                    <p className="text-gray-700 text-sm leading-relaxed">
                       {reply.message}
                     </p>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex items-center gap-2 text-xs text-gray-500">
-                <Clock className="h-3.5 w-3.5" />
-                <span>Received {reply.receivedAt}</span>
-              </div>
-            </div>
+                {/* Search Section */}
+                <div className="space-y-3">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400" />
+                    <Input
+                      placeholder="Search for a player to link..."
+                      value={searchQuery}
+                      onChange={(e) => handleSearch(e.target.value)}
+                      className="pl-9 h-9 text-sm bg-white"
+                      autoFocus
+                    />
+                  </div>
 
-            {suggestedPlayers.length > 0 && (
-              <div>
-                <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                  Suggested Players
-                  <Badge variant="secondary" className="text-xs">
-                    {suggestedPlayers.length}
-                  </Badge>
-                </h3>
-                <ScrollArea className="h-[200px] rounded-lg border border-gray-200 bg-white">
-                  <div className="p-2 space-y-1">
-                    {suggestedPlayers.map((player) => (
-                      <div
-                        key={player.id}
-                        onClick={() => setSelectedPlayerId(player.id)}
-                        className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
-                          selectedPlayerId === player.id
-                            ? 'bg-blue-50 border-2 border-blue-500'
-                            : 'hover:bg-gray-50 border-2 border-transparent'
-                        }`}
-                      >
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-gray-900">{player.name}</p>
-                          <p className="text-xs text-gray-500 mt-0.5">
-                            {player.phone} • {player.programme}
-                          </p>
-                          <div className="flex items-center gap-2 mt-1">
-                            <Badge variant="outline" className="text-xs">
-                              {player.status}
-                            </Badge>
+                  {searchResults.length > 0 && (
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between px-1">
+                        <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider">Search Results</h3>
+                        <span className="bg-gray-100 text-gray-600 text-[10px] px-1.5 py-0.5 rounded-full font-medium">
+                          {searchResults.length} found
+                        </span>
+                      </div>
+
+                      {searchResults.map((player) => (
+                        <div
+                          key={player.id}
+                          onClick={() => setSelectedPlayerId(player.id)}
+                          className={`group relative flex items-center justify-between p-3 rounded-lg border transition-all cursor-pointer ${selectedPlayerId === player.id
+                            ? 'bg-blue-50 border-blue-200 shadow-sm'
+                            : 'bg-white border-gray-200 hover:border-blue-200 hover:bg-gray-50'
+                            }`}
+                        >
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-sm font-semibold text-gray-900">{player.name}</span>
+                              <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-5">
+                                {player.status}
+                              </Badge>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-gray-500">
+                              <Phone className="h-3 w-3 text-gray-400" />
+                              <span>{player.phone}</span>
+                              <span className="w-0.5 h-0.5 rounded-full bg-gray-300"></span>
+                              <span>{player.programme}</span>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="h-8 px-3 text-xs font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+                              onClick={(e) => handleViewPlayer(e, player)}
+                            >
+                              View
+                            </Button>
+                            <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${selectedPlayerId === player.id
+                              ? 'border-blue-500 bg-blue-500'
+                              : 'border-gray-300 group-hover:border-blue-400'
+                              }`}>
+                              {selectedPlayerId === player.id && <Check className="h-3 w-3 text-white" />}
+                            </div>
                           </div>
                         </div>
-                        {selectedPlayerId === player.id && (
-                          <Check className="h-5 w-5 text-blue-600 flex-shrink-0 ml-2" />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </ScrollArea>
-              </div>
-            )}
-
-            <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">Search for player</h3>
-              <div className="relative mb-3">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                <Input
-                  placeholder="Search by name, phone, email, or ID..."
-                  value={searchQuery}
-                  onChange={(e) => handleSearch(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-              {searchQuery && (
-                <>
-                  {searchResults.length > 0 ? (
-                    <ScrollArea className="h-[200px] rounded-lg border border-gray-200 bg-white">
-                      <div className="p-2 space-y-1">
-                        {searchResults.map((player) => (
-                          <div
-                            key={player.id}
-                            onClick={() => setSelectedPlayerId(player.id)}
-                            className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
-                              selectedPlayerId === player.id
-                                ? 'bg-blue-50 border-2 border-blue-500'
-                                : 'hover:bg-gray-50 border-2 border-transparent'
-                            }`}
-                          >
-                            <div className="flex-1 min-w-0">
-                              <p className="text-sm font-semibold text-gray-900">{player.name}</p>
-                              <p className="text-xs text-gray-500 mt-0.5">
-                                {player.email}
-                              </p>
-                              <p className="text-xs text-gray-500 mt-0.5">
-                                {player.phone} • {player.programme}
-                              </p>
-                            </div>
-                            {selectedPlayerId === player.id && (
-                              <Check className="h-5 w-5 text-blue-600 flex-shrink-0 ml-2" />
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </ScrollArea>
-                  ) : (
-                    <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
-                      <p className="text-sm text-gray-500">No players found matching "{searchQuery}"</p>
+                      ))}
                     </div>
                   )}
-                </>
-              )}
-            </div>
 
-            <div className="flex flex-col gap-3 pt-6 border-t">
-              <Button
-                onClick={handleLinkToPlayer}
-                disabled={!selectedPlayerId || submitting}
-                size="lg"
-                className="w-full"
-              >
-                {submitting ? "Linking..." : selectedPlayer ? `Link to ${selectedPlayer.name}` : "Link to Player"}
-              </Button>
+                  {searchQuery && searchResults.length === 0 && (
+                    <div className="text-center py-8 text-gray-500 text-sm">
+                      No players found matching "{searchQuery}"
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          <div className="p-6 pt-4 border-t bg-gray-50/50 flex items-center justify-between gap-3">
+            <button
+              onClick={handleMarkSpam}
+              disabled={submitting}
+              className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors px-2"
+            >
+              Mark as spam
+            </button>
+            <div className="flex gap-3">
               <Button
                 variant="outline"
-                onClick={handleMarkSpam}
-                disabled={submitting}
-                size="lg"
-                className="w-full gap-2 text-red-600 border-red-200 hover:bg-red-50 hover:text-red-700"
+                onClick={onClose}
+                className="bg-white hover:bg-gray-50 text-gray-700 border-gray-200"
               >
-                <AlertTriangle className="h-4 w-4" />
-                Mark as spam
+                Cancel
               </Button>
+              {selectedPlayerId ? (
+                <Button
+                  onClick={handleCreateDeal}
+                  className="gap-2 bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                >
+                  Create Deal
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleLinkToPlayer}
+                  disabled={!selectedPlayerId || submitting}
+                  className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                >
+                  {submitting ? "Linking..." : "Link to Player"}
+                </Button>
+              )}
             </div>
           </div>
-        ) : null}
-      </SheetContent>
-    </Sheet>
+        </DialogContent>
+      </Dialog>
+
+      <MatchedPlayerDialog
+        open={showPlayerDialog}
+        onOpenChange={setShowPlayerDialog}
+        player={viewingPlayer}
+        onCreateDeal={handleCreateDealFromDialog}
+      />
+    </>
   )
 }

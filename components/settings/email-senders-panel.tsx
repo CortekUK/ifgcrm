@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
@@ -143,12 +143,12 @@ export function EmailSendersPanel() {
         </div>
       )}
 
-      <Sheet open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-        <SheetContent className="w-[440px] bg-gray-50 transition-transform duration-250 ease-in-out sm:max-w-none">
-          <SheetHeader>
-            <SheetTitle>Add sender</SheetTitle>
-            <SheetDescription>Add a new email identity for outbound campaigns</SheetDescription>
-          </SheetHeader>
+      <Dialog open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+        <DialogContent className="max-w-xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Add sender</DialogTitle>
+            <DialogDescription>Add a new email identity for outbound campaigns</DialogDescription>
+          </DialogHeader>
           <form onSubmit={handleSubmit} className="mt-6">
             <div className="space-y-6">
               <div className="space-y-2">
@@ -209,17 +209,17 @@ export function EmailSendersPanel() {
                 </AlertDescription>
               </Alert>
             </div>
-            <SheetFooter className="mt-6">
+            <DialogFooter className="mt-6">
               <Button type="button" variant="outline" onClick={() => setIsDrawerOpen(false)}>
                 Cancel
               </Button>
               <Button type="submit" className="gradient-primary">
                 Add sender
               </Button>
-            </SheetFooter>
+            </DialogFooter>
           </form>
-        </SheetContent>
-      </Sheet>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

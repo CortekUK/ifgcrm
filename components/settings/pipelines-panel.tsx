@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Plus, Settings, Workflow } from "lucide-react"
@@ -179,12 +179,12 @@ export function PipelinesPanel() {
         </div>
       )}
 
-      <Sheet open={isCreateOpen} onOpenChange={setIsCreateOpen}>
-        <SheetContent className="w-[440px] bg-gray-50 transition-transform duration-250 ease-in-out sm:max-w-none">
-          <SheetHeader>
-            <SheetTitle>Add pipeline</SheetTitle>
-            <SheetDescription>Create a new pipeline for managing deals</SheetDescription>
-          </SheetHeader>
+      <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
+        <DialogContent className="max-w-xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Add pipeline</DialogTitle>
+            <DialogDescription>Create a new pipeline for managing deals</DialogDescription>
+          </DialogHeader>
           <form onSubmit={handleCreatePipeline} className="mt-6">
             <div className="space-y-6">
               <div className="space-y-2">
@@ -199,24 +199,24 @@ export function PipelinesPanel() {
                 />
               </div>
             </div>
-            <SheetFooter className="mt-6">
+            <DialogFooter className="mt-6">
               <Button type="button" variant="outline" onClick={() => setIsCreateOpen(false)}>
                 Cancel
               </Button>
               <Button type="submit" className="gradient-primary">
                 Create pipeline
               </Button>
-            </SheetFooter>
+            </DialogFooter>
           </form>
-        </SheetContent>
-      </Sheet>
+        </DialogContent>
+      </Dialog>
 
-      <Sheet open={isEditStagesOpen} onOpenChange={setIsEditStagesOpen}>
-        <SheetContent className="w-[440px] bg-gray-50 transition-transform duration-250 ease-in-out sm:max-w-none">
-          <SheetHeader>
-            <SheetTitle>Edit stages: {selectedPipeline?.name}</SheetTitle>
-            <SheetDescription>Manage the stages for this pipeline</SheetDescription>
-          </SheetHeader>
+      <Dialog open={isEditStagesOpen} onOpenChange={setIsEditStagesOpen}>
+        <DialogContent className="max-w-xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+          <DialogHeader>
+            <DialogTitle>Edit stages: {selectedPipeline?.name}</DialogTitle>
+            <DialogDescription>Manage the stages for this pipeline</DialogDescription>
+          </DialogHeader>
           <div className="mt-6 space-y-6">
             <div className="space-y-3">
               {stages.map((stage, index) => (
@@ -258,16 +258,16 @@ export function PipelinesPanel() {
               Add stage
             </Button>
           </div>
-          <SheetFooter className="mt-6">
+          <DialogFooter className="mt-6">
             <Button type="button" variant="outline" onClick={() => setIsEditStagesOpen(false)}>
               Cancel
             </Button>
             <Button onClick={handleSaveStages} className="gradient-primary">
               Save stages
             </Button>
-          </SheetFooter>
-        </SheetContent>
-      </Sheet>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

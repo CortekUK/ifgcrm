@@ -19,6 +19,7 @@ interface Invoice {
   status: "draft" | "sent" | "paid" | "overdue"
   due_date: string
   payment_url?: string
+  stage: string
 }
 
 interface Programme {
@@ -192,6 +193,7 @@ export function InvoicesTable() {
                 <TableHead className="font-semibold text-gray-700">Invoice #</TableHead>
                 <TableHead className="font-semibold text-gray-700">Player</TableHead>
                 <TableHead className="font-semibold text-gray-700">Programme</TableHead>
+                <TableHead className="font-semibold text-gray-700">Stage</TableHead>
                 <TableHead className="text-right font-semibold text-gray-700">Amount</TableHead>
                 <TableHead className="font-semibold text-gray-700">Status</TableHead>
                 <TableHead className="font-semibold text-gray-700">Due Date</TableHead>
@@ -201,13 +203,13 @@ export function InvoicesTable() {
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="h-32 text-center text-gray-500">
+                  <TableCell colSpan={8} className="h-32 text-center text-gray-500">
                     Loading invoices...
                   </TableCell>
                 </TableRow>
               ) : invoices.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="h-32 text-center text-gray-500">
+                  <TableCell colSpan={8} className="h-32 text-center text-gray-500">
                     No invoices found
                   </TableCell>
                 </TableRow>
@@ -227,6 +229,11 @@ export function InvoicesTable() {
                     <TableCell className="font-medium text-gray-900">{invoice.invoice_number}</TableCell>
                     <TableCell className="text-gray-700">{invoice.player_name}</TableCell>
                     <TableCell className="text-gray-700">{invoice.programme}</TableCell>
+                    <TableCell className="text-gray-700">
+                      <Badge variant="outline" className="bg-indigo-100 text-indigo-700 hover:bg-indigo-200">
+                        {invoice.stage}
+                      </Badge>
+                    </TableCell>
                     <TableCell className="text-right font-bold text-gray-900">
                       {formatCurrency(invoice.amount, invoice.currency)}
                     </TableCell>

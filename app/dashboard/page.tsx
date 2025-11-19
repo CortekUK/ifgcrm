@@ -5,7 +5,7 @@ import { StatsCards } from "@/components/dashboard/stats-cards"
 import { UnmatchedReplies } from "@/components/dashboard/unmatched-replies"
 import { LeadsByProgram } from "@/components/dashboard/leads-by-program"
 import { RecentActivity } from "@/components/dashboard/recent-activity"
-import { LeadSourcesBreakdown } from "@/components/dashboard/lead-sources-breakdown"
+import { PlayerInflows } from "@/components/dashboard/player-inflows"
 import { ProgrammeInterest } from "@/components/dashboard/programme-interest"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -57,7 +57,7 @@ export default async function DashboardPage() {
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <LeadSourcesBreakdown />
+        <PlayerInflows />
         <ProgrammeInterest />
       </div>
 

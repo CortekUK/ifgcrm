@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -158,14 +158,14 @@ export function InvoiceDrawer({ invoice, open, onOpenChange, onUpdate }: Invoice
   }
 
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-full overflow-y-auto transition-transform duration-250 ease-in-out sm:max-w-[460px]">
-        <SheetHeader>
-          <SheetTitle className="text-xl">Invoice {invoice.invoice_number}</SheetTitle>
-          <SheetDescription className="flex items-center gap-2">
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader>
+          <DialogTitle className="text-xl">Invoice {invoice.invoice_number}</DialogTitle>
+          <DialogDescription className="flex items-center gap-2">
             {invoice.player_name} • {getStatusBadge(invoice.status)}
-          </SheetDescription>
-        </SheetHeader>
+          </DialogDescription>
+        </DialogHeader>
 
         <Tabs defaultValue="details" className="mt-6">
           <TabsList className="grid w-full grid-cols-3">
@@ -325,7 +325,7 @@ export function InvoiceDrawer({ invoice, open, onOpenChange, onUpdate }: Invoice
             )}
           </TabsContent>
         </Tabs>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

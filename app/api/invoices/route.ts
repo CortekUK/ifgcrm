@@ -11,6 +11,7 @@ export async function GET(request: NextRequest) {
   // Mock invoice data with 120 invoices
   const programmes = ["UK Academy", "Spain Academy", "USA Academy", "Brazil Academy"]
   const statuses = ["draft", "sent", "paid", "overdue"]
+  const stages = ["Deposit", "Registration", "Mid-Term Payment", "Final Payment"]
   const names = [
     "Daniel Perez",
     "Marcus Silva",
@@ -48,6 +49,7 @@ export async function GET(request: NextRequest) {
       status: statusValue,
       due_date: new Date(Date.now() + daysOffset * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
       payment_url: `https://pay.ifgcrm.com/inv/${5000 + i}`,
+      stage: stages[i % 4],
     }
   })
 

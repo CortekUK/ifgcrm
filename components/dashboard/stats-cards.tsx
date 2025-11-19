@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
-import { TrendingUp, TrendingDown, Minus, Users, MessageSquare, Briefcase, Zap } from 'lucide-react'
+import { TrendingUp, TrendingDown, Minus, Users, MessageSquare, Mail, FileText, ArrowDownToLine } from 'lucide-react'
 
 export async function StatsCards() {
   const supabase = await createClient()
@@ -29,48 +29,48 @@ export async function StatsCards() {
 
   const stats = [
     {
-      label: "Total Leads",
-      value: totalLeads || 187,
-      trend: 12,
+      label: "SMS Inflows",
+      value: 72,
+      trend: 18,
       trendDirection: "up" as const,
-      icon: Users,
-      color: "text-blue-600 bg-blue-50",
-      gradientFrom: "from-blue-500",
-      gradientTo: "to-blue-600",
-      sparklineData: [140, 152, 148, 165, 172, 180, 187],
-    },
-    {
-      label: "Unmatched Replies",
-      value: unmatchedReplies || 4,
-      trend: 5,
-      trendDirection: "down" as const,
       icon: MessageSquare,
-      color: "text-orange-600 bg-orange-50",
-      gradientFrom: "from-orange-500",
-      gradientTo: "to-orange-600",
-      sparklineData: [9, 8, 7, 6, 5, 5, 4],
-    },
-    {
-      label: "Active Programmes",
-      value: activePrograms || 6,
-      trend: 2,
-      trendDirection: "up" as const,
-      icon: Briefcase,
       color: "text-green-600 bg-green-50",
       gradientFrom: "from-green-500",
       gradientTo: "to-green-600",
-      sparklineData: [5, 5, 6, 6, 6, 6, 6],
+      sparklineData: [48, 52, 58, 65, 68, 70, 72],
     },
     {
-      label: "Today's Activity",
-      value: todayActivities || 28,
+      label: "Email Inflows",
+      value: 58,
+      trend: 12,
+      trendDirection: "up" as const,
+      icon: Mail,
+      color: "text-blue-600 bg-blue-50",
+      gradientFrom: "from-blue-500",
+      gradientTo: "to-blue-600",
+      sparklineData: [42, 45, 48, 52, 54, 56, 58],
+    },
+    {
+      label: "Form Submissions",
+      value: 36,
       trend: 8,
       trendDirection: "up" as const,
-      icon: Zap,
+      icon: FileText,
+      color: "text-amber-600 bg-amber-50",
+      gradientFrom: "from-amber-500",
+      gradientTo: "to-amber-600",
+      sparklineData: [28, 30, 32, 33, 34, 35, 36],
+    },
+    {
+      label: "Direct CRM",
+      value: 21,
+      trend: 5,
+      trendDirection: "down" as const,
+      icon: ArrowDownToLine,
       color: "text-purple-600 bg-purple-50",
       gradientFrom: "from-purple-500",
       gradientTo: "to-purple-600",
-      sparklineData: [18, 20, 22, 24, 25, 26, 28],
+      sparklineData: [24, 23, 23, 22, 22, 21, 21],
     },
   ]
 

@@ -1,12 +1,23 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-// Mock data
+// Mock data with UK Colleges
+const ukColleges = [
+  "University of Oxford",
+  "University of Cambridge",
+  "Imperial College London",
+  "UCL",
+  "University of Manchester",
+  "King's College London",
+  "University of Edinburgh",
+  "University of Bristol"
+];
+
 const mockPlayers = Array.from({ length: 138 }, (_, i) => ({
   id: i + 1,
   name: `Player ${i + 1}`,
   email: `player${i + 1}@example.com`,
-  phone: `+1 555 ${String(Math.floor(Math.random() * 900) + 100)} ${String(Math.floor(Math.random() * 9000) + 1000)}`,
-  programme: ["US College 2026", "US College 2027", "European Academy", "UK Programme"][i % 4],
+  phone: `+44 7${String(Math.floor(Math.random() * 900) + 100)} ${String(Math.floor(Math.random() * 900000) + 100000)}`,
+  programme: ukColleges[i % ukColleges.length],
   recruiter: ["Chris", "Sarah", "Mike", "Emma"][i % 4],
   status: ["In pipeline", "Contacted", "Interview", "Signed"][i % 4],
   last_activity: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),

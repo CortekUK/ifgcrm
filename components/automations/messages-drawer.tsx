@@ -1,6 +1,6 @@
 "use client"
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Mail, CheckCircle2, XCircle } from 'lucide-react'
 
@@ -20,12 +20,12 @@ const mockMessages = [
 
 export function MessagesDrawer({ workflowName, open, onClose }: MessagesDrawerProps) {
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:w-[500px] sm:max-w-[500px] overflow-y-auto">
-        <SheetHeader className="border-b pb-4 mb-6">
-          <SheetTitle className="text-lg font-bold text-gray-900">Messages Sent</SheetTitle>
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader className="border-b pb-4 mb-6">
+          <DialogTitle className="text-lg font-bold text-gray-900">Messages Sent</DialogTitle>
           <p className="text-sm text-gray-600">{workflowName}</p>
-        </SheetHeader>
+        </DialogHeader>
 
         <div className="space-y-3">
           {mockMessages.map((message) => (
@@ -57,7 +57,7 @@ export function MessagesDrawer({ workflowName, open, onClose }: MessagesDrawerPr
             </div>
           ))}
         </div>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

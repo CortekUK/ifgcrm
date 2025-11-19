@@ -6,7 +6,7 @@ import { useState } from "react"
 import { DealCard } from "./deal-card"
 import { useToast } from "@/hooks/use-toast"
 import { Inbox, MoreVertical, Plus, Edit, Trash2 } from 'lucide-react'
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -411,13 +411,13 @@ export function KanbanBoard({ pipelineData, onDealClick, onDealMove, onStageEdit
         </div>
       </div>
 
-      <Sheet open={isStageDrawerOpen} onOpenChange={setIsStageDrawerOpen}>
-        <SheetContent className="w-[540px] sm:max-w-[540px] px-0">
+      <Dialog open={isStageDrawerOpen} onOpenChange={setIsStageDrawerOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
           <div className="px-8 pt-8 pb-5 border-b border-border">
-            <SheetHeader>
-              <SheetTitle className="text-[26px] font-semibold tracking-tight leading-tight">Edit Stage</SheetTitle>
+            <DialogHeader>
+              <DialogTitle className="text-[26px] font-semibold tracking-tight leading-tight">Edit Stage</DialogTitle>
               <p className="text-[15px] text-muted-foreground mt-2 leading-relaxed">Customise your pipeline stage</p>
-            </SheetHeader>
+            </DialogHeader>
           </div>
           {editingStage && (
             <div className="px-8 py-8 space-y-8 overflow-y-auto max-h-[calc(100vh-180px)]">
@@ -539,8 +539,8 @@ export function KanbanBoard({ pipelineData, onDealClick, onDealMove, onStageEdit
               </Button>
             </div>
           </div>
-        </SheetContent>
-      </Sheet>
+        </DialogContent>
+      </Dialog>
 
       <DeleteStageDialog
         stage={deleteDialogStage}

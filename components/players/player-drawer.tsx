@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -223,9 +223,9 @@ export function PlayerDrawer({ player, open, onClose }: PlayerDrawerProps) {
   }
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full sm:w-[540px] sm:max-w-[540px] overflow-y-auto bg-background p-0">
-        <SheetHeader className="border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-10 px-8 pt-10 pb-7">
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-3xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <DialogHeader className="border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-10 px-8 pt-10 pb-7">
           <div className="absolute right-8 top-10 flex items-center gap-2">
             {!isEditing ? (
               <Button
@@ -268,9 +268,9 @@ export function PlayerDrawer({ player, open, onClose }: PlayerDrawerProps) {
             </div>
 
             <div className="flex-1 min-w-0 pt-1">
-              <SheetTitle className="text-[28px] font-bold tracking-tight text-foreground mb-3.5 leading-tight">
+              <DialogTitle className="text-[28px] font-bold tracking-tight text-foreground mb-3.5 leading-tight">
                 {player.name}
-              </SheetTitle>
+              </DialogTitle>
               <div className="flex items-center gap-3 mb-3.5">
                 <Badge
                   className={`${getStatusBadgeClass(player.status)} border-2 text-[13px] font-semibold px-3.5 py-1.5 rounded-full`}
@@ -283,7 +283,7 @@ export function PlayerDrawer({ player, open, onClose }: PlayerDrawerProps) {
               </p>
             </div>
           </div>
-        </SheetHeader>
+        </DialogHeader>
 
         <div className="px-8 pt-8">
           <Tabs defaultValue="overview" className="space-y-8">
@@ -648,7 +648,7 @@ export function PlayerDrawer({ player, open, onClose }: PlayerDrawerProps) {
             </TabsContent>
           </Tabs>
         </div>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

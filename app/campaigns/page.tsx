@@ -5,19 +5,29 @@ import { CampaignsTable } from "@/components/campaigns/campaigns-table"
 import { Button } from "@/components/ui/button"
 import { Plus, BarChart3 } from "lucide-react"
 import { useState, useEffect } from "react"
-import { CampaignDrawer } from "@/components/campaigns/campaign-drawer"
+import { CampaignDialog } from "@/components/campaigns/campaign-dialog"
 import { createClient } from "@/lib/supabase/client"
 import type { User } from "@supabase/supabase-js"
 
 export default function CampaignsPage() {
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false)
   const [user, setUser] = useState<User | null>(null)
+  const [preselectedTemplate, setPreselectedTemplate] = useState<any>(null)
 
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user)
     })
+
+    // Check if there's a template selected from the templates page
+    const templateData = sessionStorage.getItem('selectedTemplate')
+    if (templateData) {
+      const template = JSON.parse(templateData)
+      setPreselectedTemplate(template)
+      setDialogOpen(true)
+      sessionStorage.removeItem('selectedTemplate') // Clear it after using
+    }
   }, [])
 
   if (!user) {
@@ -38,7 +48,7 @@ export default function CampaignsPage() {
             </Button>
             <Button
               className="gap-2 bg-white text-blue-600 shadow-md hover:bg-blue-50"
-              onClick={() => setDrawerOpen(true)}
+              onClick={() => setDialogOpen(true)}
             >
               <Plus className="h-4 w-4" />
               Generate Campaign
@@ -49,9 +59,20 @@ export default function CampaignsPage() {
       {/* End of standardized banner */}
 
       <CampaignsSummary />
-      <CampaignsTable onGenerateCampaign={() => setDrawerOpen(true)} />
+      <CampaignsTable onGenerateCampaign={() => setDialogOpen(true)} />
 
-      <CampaignDrawer campaign={null} open={drawerOpen} onClose={() => setDrawerOpen(false)} onSuccess={() => {}} />
+      <CampaignDialog
+        campaign={null}
+        open={dialogOpen}
+        onClose={() => {
+          setDialogOpen(false)
+          setPreselectedTemplate(null)
+        }}
+        onSuccess={() => {
+          setPreselectedTemplate(null)
+        }}
+        preselectedTemplate={preselectedTemplate}
+      />
     </AppLayout>
   )
 }

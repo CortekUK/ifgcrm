@@ -1,13 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Mail, MessageSquare, MoreVertical, Edit, Copy, Trash2, Eye, Search } from 'lucide-react'
+import { Mail, MessageSquare, MoreVertical, Edit, Copy, Trash2, Eye, Search, Rocket } from 'lucide-react'
 import { useToast } from "@/hooks/use-toast"
 
 function formatDate(date: Date): string {
@@ -33,10 +34,12 @@ interface Template {
 interface TemplateGalleryProps {
   onEdit: (template: Template | null) => void
   onPreview: (template: Template) => void
+  onUseTemplate?: (template: Template) => void
 }
 
-export function TemplateGallery({ onEdit, onPreview }: TemplateGalleryProps) {
+export function TemplateGallery({ onEdit, onPreview, onUseTemplate }: TemplateGalleryProps) {
   const { toast } = useToast()
+  const router = useRouter()
   const [templates, setTemplates] = useState<Template[]>([])
   const [loading, setLoading] = useState(true)
   const [typeFilter, setTypeFilter] = useState("all")
@@ -110,6 +113,19 @@ export function TemplateGallery({ onEdit, onPreview }: TemplateGalleryProps) {
         variant: "destructive",
       })
     }
+  }
+
+  const handleUseTemplate = (template: Template) => {
+    // Store the template in sessionStorage to pass it to the campaigns page
+    sessionStorage.setItem('selectedTemplate', JSON.stringify(template))
+
+    // Navigate to campaigns page
+    router.push('/campaigns')
+
+    toast({
+      title: "Template selected",
+      description: `Opening campaign creator with "${template.name}" template.`,
+    })
   }
 
   // Filter and sort templates
@@ -273,7 +289,12 @@ export function TemplateGallery({ onEdit, onPreview }: TemplateGalleryProps) {
                     <Eye className="mr-1 h-3 w-3" />
                     Preview
                   </Button>
-                  <Button size="sm" className="gradient-primary flex-1 text-white">
+                  <Button
+                    size="sm"
+                    className="gradient-primary flex-1 text-white"
+                    onClick={() => handleUseTemplate(template)}
+                  >
+                    <Rocket className="mr-1 h-3 w-3" />
                     Use Template
                   </Button>
                 </div>

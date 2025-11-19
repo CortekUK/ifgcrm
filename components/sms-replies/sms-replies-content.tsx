@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { MessageSquare, AlertCircle, Search, MoreVertical, CheckCircle } from 'lucide-react'
+import { MessageSquare, AlertCircle, Search, MoreVertical, CheckCircle, Brain, ThumbsUp, ThumbsDown, Sparkles } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,65 +16,94 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { MatchReplyDrawer } from "@/components/dashboard/match-reply-drawer"
+import { AiIntentDialog } from "./ai-intent-dialog"
 import { useToast } from "@/hooks/use-toast"
+import { findContactByPhoneOrEmail } from "@/lib/mock-data/contacts"
+import { MatchedPlayerDialog } from "@/components/replies/matched-player-dialog"
 
-const demoReplies = [
-  {
-    id: '1',
-    fromName: null,
-    fromNumber: '+44 7700 900123',
-    message: "Hi, I'm interested in the US College pathway. What are the next steps?",
-    receivedAt: '2h ago',
-    status: 'unmatched',
-    playerName: null,
-    playerId: null,
-    programme: null,
-  },
-  {
-    id: '2',
-    fromName: 'Sarah Mensah',
-    fromNumber: '+233 24 555 0198',
-    message: 'Thanks for the info! When does the next recruitment camp start?',
-    receivedAt: '5h ago',
-    status: 'unmatched',
-    playerName: 'Sarah Mensah',
-    playerId: '102',
-    programme: 'US College 2026',
-  },
-  {
-    id: '3',
-    fromName: null,
-    fromNumber: '+44 7700 900456',
-    message: "I've submitted my application. Can someone confirm it was received?",
-    receivedAt: '1d ago',
-    status: 'unmatched',
-    playerName: null,
-    playerId: null,
-    programme: null,
-  },
-  {
-    id: '4',
-    fromName: 'David Boateng',
-    fromNumber: '+233 20 555 0223',
-    message: 'STOP',
-    receivedAt: '1d ago',
-    status: 'spam',
-    playerName: 'David Boateng',
-    playerId: '103',
-    programme: 'European Academy',
-  },
-  {
-    id: '5',
-    fromName: 'Grace Owusu',
-    fromNumber: '+233 27 555 0167',
-    message: 'All good, really happy with the updates. Thanks!',
-    receivedAt: '2d ago',
-    status: 'matched',
-    playerName: 'Grace Owusu',
-    playerId: '104',
-    programme: 'UK Programme',
-  },
-]
+// Generate demo replies with proper matching logic
+const generateDemoReplies = () => {
+  const replies = [
+    {
+      id: '1',
+      fromNumber: '+44 7700 900123', // John Smith's number - MATCHED
+      message: "Yes! I'm definitely interested in the US College pathway. What are the next steps?",
+      receivedAt: '2h ago',
+      intent: 'positive', // For AI analysis
+    },
+    {
+      id: '2',
+      fromNumber: '+233 24 555 0198', // Sarah Mensah's number - MATCHED
+      message: 'Thanks for the info! When does the next recruitment camp start?',
+      receivedAt: '5h ago',
+      intent: 'positive',
+    },
+    {
+      id: '3',
+      fromNumber: '+44 7700 900456', // Sophie Williams' number - MATCHED
+      message: "I've submitted my application. Can someone confirm it was received?",
+      receivedAt: '1d ago',
+      intent: 'positive',
+    },
+    {
+      id: '4',
+      fromNumber: '+233 20 555 0223', // David Boateng's number - MATCHED (but spam)
+      message: 'STOP',
+      receivedAt: '1d ago',
+      intent: 'negative',
+    },
+    {
+      id: '5',
+      fromNumber: '+233 27 555 0167', // Grace Owusu's number - MATCHED
+      message: "Sorry, I'm no longer interested in the programme. Please remove me from your list.",
+      receivedAt: '2d ago',
+      intent: 'negative',
+    },
+    {
+      id: '6',
+      fromNumber: '+44 7700 900789', // Emma Johnson's number - MATCHED
+      message: 'This sounds amazing! Ready to start the enrollment process.',
+      receivedAt: '3d ago',
+      intent: 'positive',
+    },
+    {
+      id: '7',
+      fromNumber: '+1 555 999 8888', // Unknown number - UNMATCHED
+      message: 'Hi, saw your ad about football training. Need more info please.',
+      receivedAt: '3d ago',
+      intent: 'neutral',
+    },
+    {
+      id: '8',
+      fromNumber: '+44 7700 111222', // Unknown number - UNMATCHED
+      message: 'Can you send me details about the scholarship opportunities?',
+      receivedAt: '4d ago',
+      intent: 'positive',
+    },
+  ]
+
+  // Apply matching logic based on contacts database
+  return replies.map(reply => {
+    const contact = findContactByPhoneOrEmail(reply.fromNumber)
+
+    // Check for spam keywords
+    const isSpam = reply.message.toLowerCase().includes('stop') ||
+      reply.message.toLowerCase().includes('unsubscribe')
+
+    return {
+      ...reply,
+      fromName: contact?.name || null,
+      status: isSpam ? 'spam' : (contact ? 'matched' : 'unmatched'),
+      playerName: contact?.name || null,
+      playerId: contact?.id || null,
+      programme: contact?.programme || null,
+      playerEmail: contact?.email || null,
+      playerPhone: contact?.phone || null,
+    }
+  })
+}
+
+const demoReplies = generateDemoReplies()
 
 type StatusFilter = "unmatched" | "matched" | "spam"
 type TimeRange = "7days" | "30days" | "all"
@@ -85,7 +114,7 @@ export function SmsRepliesContent() {
   const { toast } = useToast()
 
   const [activeTab, setActiveTab] = useState<StatusFilter>(
-    (searchParams.get("status") as StatusFilter) || "unmatched"
+    (searchParams.get("status") as StatusFilter) || "matched"
   )
   const [timeRange, setTimeRange] = useState<TimeRange>("30days")
   const [searchQuery, setSearchQuery] = useState("")
@@ -93,6 +122,17 @@ export function SmsRepliesContent() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [selectedReplyId, setSelectedReplyId] = useState<string | null>(null)
+  const [showAiDialog, setShowAiDialog] = useState(false)
+  const [showPlayerDialog, setShowPlayerDialog] = useState(false)
+  const [selectedPlayer, setSelectedPlayer] = useState<{
+    id: string
+    name: string
+    email?: string
+    phone?: string
+    location?: string
+    program?: string
+    status?: string
+  } | null>(null)
 
   useEffect(() => {
     const status = searchParams.get("status") as StatusFilter | null
@@ -103,9 +143,8 @@ export function SmsRepliesContent() {
 
   const handleTabChange = (tab: StatusFilter) => {
     setActiveTab(tab)
-    const params = new URLSearchParams(searchParams.toString())
-    params.set("status", tab)
-    router.push(`/sms-replies?${params.toString()}`, { scroll: false })
+    // No need to navigate - just update local state
+    // The tab content will update automatically via filteredMessages
   }
 
   const handleMatchSuccess = () => {
@@ -177,6 +216,34 @@ export function SmsRepliesContent() {
     return true
   })
 
+  const handlePlayerClick = (message: any) => {
+    if (message.playerId && message.playerName) {
+      setSelectedPlayer({
+        id: message.playerId,
+        name: message.playerName,
+        email: message.playerEmail,
+        phone: message.playerPhone,
+        program: message.programme,
+        status: 'matched'
+      })
+      setShowPlayerDialog(true)
+    }
+  }
+
+  const handleCreateDeal = () => {
+    if (selectedPlayer) {
+      setShowPlayerDialog(false)
+      const params = new URLSearchParams({
+        action: 'create_deal',
+        playerId: selectedPlayer.id,
+        playerName: selectedPlayer.name,
+        playerEmail: selectedPlayer.email || '',
+        playerPhone: selectedPlayer.phone || ''
+      })
+      router.push(`/pipelines?${params.toString()}`)
+    }
+  }
+
   const getStatusBadge = (status: string) => {
     if (status === "spam") {
       return <Badge variant="outline" className="bg-gray-50 text-gray-700 border-gray-200">Spam</Badge>
@@ -205,53 +272,34 @@ export function SmsRepliesContent() {
 
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
-      
-      <div className="mb-6">
-        <h1
-          className="text-2xl font-bold uppercase"
-          style={{ fontFamily: "'Oswald', sans-serif", color: "#0A47B1" }}
-        >
-          SMS Replies
-        </h1>
-        <p className="text-sm text-gray-600 mt-1">
-          Review and match incoming SMS messages from players and parents.
-        </p>
-      </div>
-
       <Card className="mb-6 bg-white border border-gray-200 shadow-sm">
         <div className="flex gap-1 p-2 border-b">
           <button
-            onClick={() => handleTabChange("unmatched")}
-            className={`px-6 py-2.5 rounded-lg text-[15px] font-medium transition-all ${
-              activeTab === "unmatched"
-                ? "bg-[#0A47B1] text-white shadow-sm"
-                : "text-gray-600 hover:bg-gray-100"
-            }`}
-            style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.5px" }}
-          >
-            Unmatched
-          </button>
-          <button
             onClick={() => handleTabChange("matched")}
-            className={`px-6 py-2.5 rounded-lg text-[15px] font-medium transition-all ${
-              activeTab === "matched"
-                ? "bg-[#0A47B1] text-white shadow-sm"
-                : "text-gray-600 hover:bg-gray-100"
-            }`}
+            className={`px-6 py-2.5 rounded-lg text-[15px] font-medium transition-all ${activeTab === "matched"
+              ? "bg-[#0A47B1] text-white shadow-sm"
+              : "text-gray-600 hover:bg-gray-100"
+              }`}
             style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.5px" }}
           >
             Matched
           </button>
           <button
+            onClick={() => handleTabChange("unmatched")}
+            className={`px-6 py-2.5 rounded-lg text-[15px] font-medium transition-all ${activeTab === "unmatched"
+              ? "bg-[#0A47B1] text-white shadow-sm"
+              : "text-gray-600 hover:bg-gray-100"
+              }`}
+            style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.5px" }}
+          >
+            Unmatched
+          </button>
+          <button
             onClick={() => handleTabChange("spam")}
-            className={`px-6 py-2.5 rounded-lg text-[15px] font-medium transition-all ${
-              activeTab === "spam"
-                ? "bg-[#0A47B1] text-white shadow-sm"
-                : "text-gray-600 hover:bg-gray-100"
-            }`}
+            className={`px-6 py-2.5 rounded-lg text-[15px] font-medium transition-all ${activeTab === "spam"
+              ? "bg-[#0A47B1] text-white shadow-sm"
+              : "text-gray-600 hover:bg-gray-100"
+              }`}
             style={{ fontFamily: "'Oswald', sans-serif", letterSpacing: "0.5px" }}
           >
             Spam
@@ -280,6 +328,17 @@ export function SmsRepliesContent() {
             className="pl-10"
           />
         </div>
+
+        {activeTab === "matched" && filteredMessages.length > 0 && (
+          <Button
+            onClick={() => setShowAiDialog(true)}
+            className="gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700"
+          >
+            <Brain className="h-4 w-4" />
+            AI Intent Analysis
+            <Sparkles className="h-3 w-3" />
+          </Button>
+        )}
       </div>
 
       <Card>
@@ -295,9 +354,9 @@ export function SmsRepliesContent() {
               <AlertCircle className="mx-auto h-12 w-12 text-red-500" />
               <p className="mt-4 text-sm font-semibold text-gray-900">Couldn't load replies</p>
               <p className="mt-1 text-xs text-gray-500">Please check your connection and try again.</p>
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 className="mt-4"
                 onClick={() => setError(false)}
               >
@@ -310,6 +369,7 @@ export function SmsRepliesContent() {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Message</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Name</th>
                     <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">From</th>
                     <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
                     <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Received</th>
@@ -318,22 +378,53 @@ export function SmsRepliesContent() {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {filteredMessages.map((message) => (
-                    <tr 
+                    <tr
                       key={message.id}
                       onClick={() => setSelectedReplyId(message.id)}
                       className="transition-colors hover:bg-gray-50 cursor-pointer"
                     >
                       <td className="px-4 py-3">
-                        <p className="line-clamp-2 text-sm text-gray-700">{message.message}</p>
+                        <div>
+                          <p className="line-clamp-2 text-sm text-gray-700">{message.message}</p>
+                          {message.status === "matched" && message.intent && (
+                            <div className="mt-1">
+                              {message.intent === 'positive' ? (
+                                <Badge className="bg-green-50 text-green-700 border-green-200 text-xs">
+                                  <ThumbsUp className="h-3 w-3 mr-1" />
+                                  Positive Intent
+                                </Badge>
+                              ) : message.intent === 'negative' ? (
+                                <Badge className="bg-red-50 text-red-700 border-red-200 text-xs">
+                                  <ThumbsDown className="h-3 w-3 mr-1" />
+                                  Negative Intent
+                                </Badge>
+                              ) : null}
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-4 py-3">
+                        {message.playerName ? (
+                          <div>
+                            <p
+                              className="text-sm font-medium text-blue-600 hover:underline cursor-pointer"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                handlePlayerClick(message)
+                              }}
+                            >
+                              {message.playerName}
+                            </p>
+                            {message.programme && (
+                              <p className="text-xs text-gray-500 mt-0.5">{message.programme}</p>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="text-sm text-gray-400 italic">Unknown</p>
+                        )}
                       </td>
                       <td className="px-4 py-3">
                         <p className="text-sm font-medium text-gray-900">{message.fromNumber}</p>
-                        {message.status === "matched" && message.playerName && (
-                          <p className="text-xs text-gray-500 mt-0.5">
-                            <span className="text-blue-600 hover:underline cursor-pointer">{message.playerName}</span>
-                            {message.programme && ` • ${message.programme}`}
-                          </p>
-                        )}
                       </td>
                       <td className="px-4 py-3">
                         {getStatusBadge(message.status)}
@@ -375,7 +466,7 @@ export function SmsRepliesContent() {
                               variant="outline"
                               onClick={(e) => {
                                 e.stopPropagation()
-                                // Navigate to player profile
+                                handlePlayerClick(message)
                               }}
                             >
                               View player
@@ -421,6 +512,23 @@ export function SmsRepliesContent() {
         onClose={() => setSelectedReplyId(null)}
         onSuccess={handleMatchSuccess}
       />
+
+      {showAiDialog && (
+        <AiIntentDialog
+          open={showAiDialog}
+          onOpenChange={setShowAiDialog}
+          messages={filteredMessages.filter(m => m.status === 'matched')}
+        />
+      )}
+
+      {selectedPlayer && (
+        <MatchedPlayerDialog
+          open={showPlayerDialog}
+          onOpenChange={setShowPlayerDialog}
+          player={selectedPlayer}
+          onCreateDeal={handleCreateDeal}
+        />
+      )}
     </>
   )
 }

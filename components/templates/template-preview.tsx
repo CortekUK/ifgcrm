@@ -1,6 +1,6 @@
 "use client"
 
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
@@ -33,21 +33,23 @@ export function TemplatePreview({ template, open, onClose }: TemplatePreviewProp
   }
 
   return (
-    <Sheet open={open} onOpenChange={onClose}>
-      <SheetContent className="w-full overflow-y-auto sm:max-w-[600px]">
-        <SheetHeader>
-          <div className="space-y-2">
-            <SheetTitle>{template.name}</SheetTitle>
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-3xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+        <div className="px-6 pt-6 pb-4 border-b">
+          <DialogHeader>
+            <div className="space-y-2">
+              <DialogTitle>{template.name}</DialogTitle>
             <Badge
               variant="secondary"
               className={template.type === "email" ? "bg-blue-100 text-blue-700" : "bg-green-100 text-green-700"}
             >
               {template.type === "email" ? "Email" : "SMS"}
             </Badge>
-          </div>
-        </SheetHeader>
+            </div>
+          </DialogHeader>
+        </div>
 
-        <div className="mt-6 space-y-4">
+        <div className="overflow-y-auto px-6 py-4 space-y-4">
           {/* Preview content */}
           <div className="rounded-lg border bg-gray-50 p-6">
             {template.type === "email" && template.htmlContent ? (
@@ -63,7 +65,7 @@ export function TemplatePreview({ template, open, onClose }: TemplatePreviewProp
             Use in Campaign
           </Button>
         </div>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

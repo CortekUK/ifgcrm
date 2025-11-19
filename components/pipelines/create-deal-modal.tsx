@@ -27,6 +27,7 @@ interface CreateDealModalProps {
   open: boolean
   onClose: () => void
   preSelectedStageId?: number | null
+  preSelectedPlayer?: { id: string; name: string; email?: string; phone?: string } | null
   onDealCreated?: (deal: any) => void // Add callback for optimistic update
 }
 
@@ -51,7 +52,7 @@ interface Recruiter {
   name: string
 }
 
-export function CreateDealModal({ open, onClose, preSelectedStageId, onDealCreated }: CreateDealModalProps) {
+export function CreateDealModal({ open, onClose, preSelectedStageId, preSelectedPlayer, onDealCreated }: CreateDealModalProps) {
   const [loading, setLoading] = useState(false)
   const [players, setPlayers] = useState<Player[]>([])
   const [programmes, setProgrammes] = useState<Programme[]>([])
@@ -99,48 +100,55 @@ export function CreateDealModal({ open, onClose, preSelectedStageId, onDealCreat
     }
   }, [preSelectedStageId, stages])
 
-  const fetchPlayers = async () => {
-    try {
-      const response = await fetch("/api/players")
-      const data = await response.json()
-      setPlayers(data.data || [])
-    } catch (error) {
-      console.error("Failed to fetch players:", error)
+  useEffect(() => {
+    if (preSelectedPlayer) {
+      setFormData(prev => ({
+        ...prev,
+        player_id: preSelectedPlayer.id,
+        player_name: preSelectedPlayer.name
+      }))
     }
+  }, [preSelectedPlayer])
+
+  const fetchPlayers = async () => {
+    // Mock players for demo
+    setPlayers([
+      { id: 1, name: "John Smith", email: "john.smith@example.com" },
+      { id: 2, name: "Emma Johnson", email: "emma.j@example.com" },
+      { id: 3, name: "Michael Chen", email: "m.chen@example.com" },
+    ])
   }
 
   const fetchProgrammes = async () => {
-    try {
-      const response = await fetch("/api/settings/programmes")
-      const data = await response.json()
-      setProgrammes(data || [])
-    } catch (error) {
-      console.error("Failed to fetch programmes:", error)
-    }
+    // Mock programmes for demo
+    setProgrammes([
+      { id: 1, name: "Youth Academy" },
+      { id: 2, name: "Elite Training" },
+      { id: 3, name: "Summer Camp" },
+    ])
   }
 
   const fetchStages = async (programmeId: string) => {
-    try {
-      const response = await fetch(`/api/pipelines/${programmeId}/stages?stagesOnly=true`)
-      const data = await response.json()
-      setStages(data || [])
-      // Auto-select first stage if none selected
-      if (data && data.length > 0 && !formData.stage_id) {
-        setFormData((prev) => ({ ...prev, stage_id: data[0].id.toString() }))
-      }
-    } catch (error) {
-      console.error("Failed to fetch stages:", error)
+    // Mock stages for demo
+    setStages([
+      { id: 1, name: "New Lead" },
+      { id: 2, name: "Contacted" },
+      { id: 3, name: "Trial Scheduled" },
+      { id: 4, name: "Offer Sent" },
+      { id: 5, name: "Signed" },
+    ])
+    if (!formData.stage_id) {
+      setFormData((prev) => ({ ...prev, stage_id: "1" }))
     }
   }
 
   const fetchRecruiters = async () => {
-    try {
-      const response = await fetch("/api/settings/recruiters")
-      const data = await response.json()
-      setRecruiters(data || [])
-    } catch (error) {
-      console.error("Failed to fetch recruiters:", error)
-    }
+    // Mock recruiters for demo
+    setRecruiters([
+      { id: 1, name: "Sarah Wilson" },
+      { id: 2, name: "Mike Thompson" },
+      { id: 3, name: "David Brown" },
+    ])
   }
 
   const validate = () => {
@@ -170,65 +178,53 @@ export function CreateDealModal({ open, onClose, preSelectedStageId, onDealCreat
 
     setLoading(true)
 
-    try {
-      const response = await fetch("/api/deals", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          player_id: formData.player_id || null,
-          player_name: formData.player_name,
-          pipeline_id: formData.programme_id,
-          stage_id: formData.stage_id,
-          recruiter_id: formData.recruiter_id,
-          value: formData.deal_value ? Number.parseFloat(formData.deal_value) : null,
-          notes: formData.notes,
-        }),
-      })
+    // Simulate API call
+    setTimeout(() => {
+      const selectedRecruiter = recruiters.find(r => r.id.toString() === formData.recruiter_id)
+      const selectedProgramme = programmes.find(p => p.id.toString() === formData.programme_id)
+      const selectedStage = stages.find(s => s.id.toString() === formData.stage_id)
 
-      if (response.ok) {
-        const newDeal = await response.json()
-
-        toast({
-          title: "Deal created",
-          description: `${formData.player_name} has been added to the pipeline.`,
-        })
-
-        // Reset form
-        setFormData({
-          player_id: "",
-          player_name: "",
-          programme_id: "",
-          stage_id: "",
-          recruiter_id: "",
-          deal_value: "",
-          notes: "",
-        })
-
-        if (onDealCreated) {
-          onDealCreated(newDeal)
-        }
-
-        onClose()
-      } else {
-        const error = await response.json()
-        toast({
-          title: "Failed to create deal",
-          description: error.error || "Please try again.",
-          variant: "destructive",
-        })
+      const newDeal = {
+        id: Math.floor(Math.random() * 1000),
+        player_name: formData.player_name,
+        email: preSelectedPlayer?.email || "player@example.com",
+        phone: preSelectedPlayer?.phone || "+44 7700 900000",
+        programme: selectedProgramme?.name || "Youth Academy",
+        recruiter: selectedRecruiter?.name || "Sarah Wilson",
+        status: "active",
+        last_activity: new Date().toISOString(),
+        stage_id: parseInt(formData.stage_id),
+        stage_name: selectedStage?.name || "New Lead",
+        recruiter_id: formData.recruiter_id ? parseInt(formData.recruiter_id) : 1,
+        program_id: parseInt(formData.programme_id),
+        deal_value: formData.deal_value ? parseFloat(formData.deal_value) : 0,
+        notes: formData.notes,
+        pipeline_id: formData.programme_id
       }
-    } catch (error) {
-      console.error("[v0] Error creating deal:", error)
+
       toast({
-        title: "Failed to create deal",
-        description: "An unexpected error occurred.",
-        variant: "destructive",
+        title: "Deal created",
+        description: `${formData.player_name} has been added to the pipeline.`,
       })
-    } finally {
+
+      // Reset form
+      setFormData({
+        player_id: "",
+        player_name: "",
+        programme_id: "",
+        stage_id: "",
+        recruiter_id: "",
+        deal_value: "",
+        notes: "",
+      })
+
+      if (onDealCreated) {
+        onDealCreated(newDeal)
+      }
+
+      onClose()
       setLoading(false)
-    }
+    }, 1000)
   }
 
   const handleCancel = () => {

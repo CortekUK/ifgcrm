@@ -17,7 +17,7 @@ export default async function SettingsPage() {
     <AppLayout user={user} title="Settings">
       <div className="gradient-primary mb-6 flex h-[72px] items-center rounded-2xl px-6 shadow-[0_2px_6px_rgba(0,0,0,0.06)]">
         <p className="text-base text-white" style={{ fontFamily: "Inter, sans-serif", fontWeight: 400 }}>
-          Manage programmes, pipelines, email identities, and team members
+          Manage programmes, email identities, and team members
         </p>
       </div>
       {/* </CHANGE> */}

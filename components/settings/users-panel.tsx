@@ -4,7 +4,6 @@ import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import {
   Dialog,
   DialogContent,
@@ -580,9 +579,9 @@ export function UsersPanel() {
       </Dialog>
 
       {/* View Details Drawer */}
-      <Sheet open={viewDrawerOpen} onOpenChange={setViewDrawerOpen}>
-        <SheetContent className="w-[440px] overflow-y-auto bg-muted/30 sm:max-w-none">
-          <SheetHeader className="mb-6">
+      <Dialog open={viewDrawerOpen} onOpenChange={setViewDrawerOpen}>
+        <DialogContent className="max-w-2xl max-h-[90vh] my-4 overflow-hidden p-0 flex flex-col">
+          <DialogHeader className="mb-6">
             <div className="flex items-center gap-3">
               <Avatar className="h-12 w-12">
                 <AvatarFallback className="bg-primary text-sm font-medium text-primary-foreground">
@@ -590,7 +589,7 @@ export function UsersPanel() {
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1">
-                <SheetTitle>{selectedUser?.name}</SheetTitle>
+                <DialogTitle>{selectedUser?.name}</DialogTitle>
                 {selectedUser && (
                   <Badge
                     variant="outline"
@@ -601,7 +600,7 @@ export function UsersPanel() {
                 )}
               </div>
             </div>
-          </SheetHeader>
+          </DialogHeader>
 
           <div className="space-y-6">
             {/* Basic Info */}
@@ -691,8 +690,8 @@ export function UsersPanel() {
               {selectedUser?.status === "suspended" ? "Restore" : "Suspend"}
             </Button>
           </div>
-        </SheetContent>
-      </Sheet>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -21,8 +22,7 @@ import {
   ChevronRight,
   ImageIcon,
 } from "lucide-react"
-import { CampaignDrawer } from "./campaign-drawer"
-import { CampaignViewDrawer } from "./campaign-view-drawer"
+import { CampaignDialog } from "./campaign-dialog"
 import { CampaignPreviewModal } from "./campaign-preview-modal"
 
 interface Campaign {
@@ -44,13 +44,13 @@ interface CampaignsTableProps {
 }
 
 export function CampaignsTable({ onGenerateCampaign }: CampaignsTableProps) {
+  const router = useRouter()
   const [campaigns, setCampaigns] = useState<Campaign[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
   const [typeFilter, setTypeFilter] = useState("all")
   const [statusFilter, setStatusFilter] = useState("all")
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null)
-  const [viewCampaign, setViewCampaign] = useState<Campaign | null>(null)
   const [previewCampaign, setPreviewCampaign] = useState<Campaign | null>(null)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -93,7 +93,7 @@ export function CampaignsTable({ onGenerateCampaign }: CampaignsTableProps) {
   }
 
   const handleView = (campaign: Campaign) => {
-    setViewCampaign(campaign)
+    router.push(`/campaigns/${campaign.id}`)
   }
 
   const handleEdit = (campaign: Campaign) => {
@@ -229,6 +229,7 @@ export function CampaignsTable({ onGenerateCampaign }: CampaignsTableProps) {
                       <span
                         className="text-sm font-medium text-foreground transition-colors hover:text-primary"
                         style={{ cursor: "pointer" }}
+                        onClick={() => router.push(`/campaigns/${campaign.id}`)}
                       >
                         {campaign.name}
                       </span>
@@ -330,7 +331,7 @@ export function CampaignsTable({ onGenerateCampaign }: CampaignsTableProps) {
         )}
       </Card>
 
-      <CampaignDrawer
+      <CampaignDialog
         campaign={selectedCampaign}
         open={drawerOpen}
         onClose={() => {
@@ -339,8 +340,6 @@ export function CampaignsTable({ onGenerateCampaign }: CampaignsTableProps) {
         }}
         onSuccess={fetchCampaigns}
       />
-
-      <CampaignViewDrawer campaign={viewCampaign} open={!!viewCampaign} onClose={() => setViewCampaign(null)} />
 
       <CampaignPreviewModal
         campaign={previewCampaign}

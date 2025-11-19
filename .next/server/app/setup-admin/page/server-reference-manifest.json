@@ -1,0 +1,20 @@
+{
+  "node": {
+    "40b822acf32490df49741317eb783bc7657870f2fd": {
+      "workers": {
+        "app/setup-admin/page": {
+          "moduleId": 6365,
+          "async": false,
+          "exportedName": "setupAdmin",
+          "filename": "app/setup-admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/setup-admin/page": "rsc"
+      },
+      "exportedName": "setupAdmin",
+      "filename": "app/setup-admin/actions.ts"
+    }
+  },
+  "edge": {}
+}
